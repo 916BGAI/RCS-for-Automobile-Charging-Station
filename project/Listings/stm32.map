@@ -673,8 +673,13 @@ Section Cross References
     key.o(.text.Key_Config) refers to stm32f10x_rcc.o(.text.RCC_APB2PeriphClockCmd) for RCC_APB2PeriphClockCmd
     key.o(.text.Key_Config) refers to stm32f10x_gpio.o(.text.GPIO_Init) for GPIO_Init
     key.o(.ARM.exidx.text.Key_Config) refers to key.o(.text.Key_Config) for [Anonymous Symbol]
-    key.o(.text.Key_GetValue) refers to stm32f10x_gpio.o(.text.GPIO_ReadInputDataBit) for GPIO_ReadInputDataBit
-    key.o(.text.Key_GetValue) refers to delay.o(.text.Delay_ms) for Delay_ms
+    key.o(.text.KEY_Scan) refers to key.o(.data.KEY_Scan.key_up) for KEY_Scan.key_up
+    key.o(.text.KEY_Scan) refers to stm32f10x_gpio.o(.text.GPIO_ReadInputDataBit) for GPIO_ReadInputDataBit
+    key.o(.text.KEY_Scan) refers to delay.o(.text.Delay_ms) for Delay_ms
+    key.o(.ARM.exidx.text.KEY_Scan) refers to key.o(.text.KEY_Scan) for [Anonymous Symbol]
+    key.o(.text.Key_GetValue) refers to key.o(.text.KEY_Scan) for KEY_Scan
+    key.o(.text.Key_GetValue) refers to key.o(.bss.num_on) for num_on
+    key.o(.text.Key_GetValue) refers to key.o(.bss.key_old) for key_old
     key.o(.ARM.exidx.text.Key_GetValue) refers to key.o(.text.Key_GetValue) for [Anonymous Symbol]
     usart1.o(.text.USART1_Config) refers to stm32f10x_rcc.o(.text.RCC_APB2PeriphClockCmd) for RCC_APB2PeriphClockCmd
     usart1.o(.text.USART1_Config) refers to stm32f10x_gpio.o(.text.GPIO_Init) for GPIO_Init
@@ -3020,6 +3025,7 @@ Removing Unused input sections from the image.
     Removing rgb.o(.rodata.cst4), (4 bytes).
     Removing key.o(.text), (0 bytes).
     Removing key.o(.ARM.exidx.text.Key_Config), (8 bytes).
+    Removing key.o(.ARM.exidx.text.KEY_Scan), (8 bytes).
     Removing key.o(.ARM.exidx.text.Key_GetValue), (8 bytes).
     Removing key.o(.rodata.cst4), (4 bytes).
     Removing usart1.o(.text), (0 bytes).
@@ -3621,7 +3627,7 @@ Removing Unused input sections from the image.
     Removing dfltui.o(.text), (26 bytes).
     Removing dfltul.o(.text), (24 bytes).
 
-1584 unused section(s) (total 70761 bytes) removed from the image.
+1585 unused section(s) (total 70769 bytes) removed from the image.
 
 ==============================================================================
 
@@ -3853,234 +3859,237 @@ Image Symbol Table
     [Anonymous Symbol]                       0x08002020   Section        0  stm32f10x_it.o(.text.HardFault_Handler)
     JTAG_SWD_Config                          0x08002025   Thumb Code    32  main.o(.text.JTAG_SWD_Config)
     [Anonymous Symbol]                       0x08002024   Section        0  main.o(.text.JTAG_SWD_Config)
-    [Anonymous Symbol]                       0x08002044   Section        0  key.o(.text.Key_Config)
-    [Anonymous Symbol]                       0x08002080   Section        0  key.o(.text.Key_GetValue)
-    [Anonymous Symbol]                       0x080021c4   Section        0  lcd.o(.text.LCD_Clear)
-    [Anonymous Symbol]                       0x0800221c   Section        0  lcd.o(.text.LCD_DisplayOn)
-    [Anonymous Symbol]                       0x08002230   Section        0  lcd.o(.text.LCD_Display_Dir)
-    [Anonymous Symbol]                       0x080022f4   Section        0  lcd.o(.text.LCD_DrawPoint)
-    [Anonymous Symbol]                       0x08002328   Section        0  lcd.o(.text.LCD_FSMC_Config)
-    [Anonymous Symbol]                       0x080023a0   Section        0  lcd.o(.text.LCD_Fill)
-    [Anonymous Symbol]                       0x08002440   Section        0  lcd.o(.text.LCD_GPIO_Config)
-    [Anonymous Symbol]                       0x08002500   Section        0  lcd.o(.text.LCD_Init)
-    [Anonymous Symbol]                       0x08002524   Section        0  lcd.o(.text.LCD_RD_DATA)
-    [Anonymous Symbol]                       0x08002530   Section        0  lcd.o(.text.LCD_ReadReg)
-    [Anonymous Symbol]                       0x08002550   Section        0  lcd.o(.text.LCD_Scan_Dir)
-    [Anonymous Symbol]                       0x080027b0   Section        0  lcd.o(.text.LCD_SetCursor)
-    [Anonymous Symbol]                       0x08002828   Section        0  lcd.o(.text.LCD_Show_Photo)
-    [Anonymous Symbol]                       0x080028b0   Section        0  lcd.o(.text.LCD_WR_DATA)
-    [Anonymous Symbol]                       0x080028c8   Section        0  lcd.o(.text.LCD_WR_REG)
-    [Anonymous Symbol]                       0x080028e0   Section        0  lcd.o(.text.LCD_WriteRAM_Prepare)
-    [Anonymous Symbol]                       0x080028f8   Section        0  lcd.o(.text.LCD_WriteReg)
-    [Anonymous Symbol]                       0x08002924   Section        0  lcd.o(.text.LCD_init_RGB)
-    [Anonymous Symbol]                       0x08002c2c   Section        0  led.o(.text.LED_Config)
-    [Anonymous Symbol]                       0x08002c8c   Section        0  mfrc522.o(.text.MFRC522_Add_IC)
-    [Anonymous Symbol]                       0x08002d4c   Section        0  mfrc522.o(.text.MFRC522_Add_IC1)
-    [Anonymous Symbol]                       0x08002e0c   Section        0  mfrc522.o(.text.MFRC_CalulateCRC)
-    [Anonymous Symbol]                       0x08002ec0   Section        0  mfrc522.o(.text.MFRC_ClrBitMask)
-    [Anonymous Symbol]                       0x08002ef0   Section        0  mfrc522.o(.text.MFRC_CmdFrame)
-    [Anonymous Symbol]                       0x08003100   Section        0  mfrc522.o(.text.MFRC_Init)
-    [Anonymous Symbol]                       0x08003108   Section        0  mfrc522.o(.text.MFRC_ReadReg)
-    [Anonymous Symbol]                       0x0800314c   Section        0  mfrc522.o(.text.MFRC_SetBitMask)
-    [Anonymous Symbol]                       0x0800317c   Section        0  mfrc522.o(.text.MFRC_WriteReg)
-    [Anonymous Symbol]                       0x080031c0   Section        0  mqttpacket.o(.text.MQTTPacket_encode)
-    [Anonymous Symbol]                       0x08003220   Section        0  mqttpacket.o(.text.MQTTPacket_len)
-    [Anonymous Symbol]                       0x08003278   Section        0  mqttconnectclient.o(.text.MQTTSerialize_connect)
-    [Anonymous Symbol]                       0x08003468   Section        0  mqttconnectclient.o(.text.MQTTSerialize_connectLength)
-    [Anonymous Symbol]                       0x0800352c   Section        0  mqttserializepublish.o(.text.MQTTSerialize_publish)
-    [Anonymous Symbol]                       0x08003648   Section        0  mqttserializepublish.o(.text.MQTTSerialize_publishLength)
-    [Anonymous Symbol]                       0x08003688   Section        0  mqttpacket.o(.text.MQTTstrlen)
-    [Anonymous Symbol]                       0x080036b4   Section        0  stm32f10x_it.o(.text.MemManage_Handler)
-    [Anonymous Symbol]                       0x080036b8   Section        0  aliyun.o(.text.MyMQTT_Connect)
-    [Anonymous Symbol]                       0x080037a0   Section        0  aliyun.o(.text.MyMQTT_Publish)
-    [Anonymous Symbol]                       0x08003860   Section        0  stm32f10x_it.o(.text.NMI_Handler)
-    [Anonymous Symbol]                       0x08003864   Section        0  misc.o(.text.NVIC_Init)
-    [Anonymous Symbol]                       0x08003910   Section        0  mfrc522.o(.text.PCD_AntennaOff)
-    [Anonymous Symbol]                       0x0800391c   Section        0  mfrc522.o(.text.PCD_AntennaOn)
-    [Anonymous Symbol]                       0x08003944   Section        0  mfrc522.o(.text.PCD_Anticoll)
-    [Anonymous Symbol]                       0x08003a00   Section        0  mfrc522.o(.text.PCD_AuthState)
-    [Anonymous Symbol]                       0x08003ac0   Section        0  mfrc522.o(.text.PCD_Init)
-    [Anonymous Symbol]                       0x08003acc   Section        0  mfrc522.o(.text.PCD_Request)
-    [Anonymous Symbol]                       0x08003b3c   Section        0  mfrc522.o(.text.PCD_Reset)
-    [Anonymous Symbol]                       0x08003bc4   Section        0  mfrc522.o(.text.PCD_Select)
-    [Anonymous Symbol]                       0x08003c74   Section        0  mfrc522.o(.text.PCD_WriteBlock)
-    [Anonymous Symbol]                       0x08003d68   Section        0  stm32f10x_it.o(.text.PendSV_Handler)
-    [Anonymous Symbol]                       0x08003d6c   Section        0  stm32f10x_rcc.o(.text.RCC_ADCCLKConfig)
-    [Anonymous Symbol]                       0x08003d98   Section        0  stm32f10x_rcc.o(.text.RCC_AHBPeriphClockCmd)
-    [Anonymous Symbol]                       0x08003dd0   Section        0  stm32f10x_rcc.o(.text.RCC_APB1PeriphClockCmd)
-    [Anonymous Symbol]                       0x08003e08   Section        0  stm32f10x_rcc.o(.text.RCC_APB2PeriphClockCmd)
-    [Anonymous Symbol]                       0x08003e40   Section        0  stm32f10x_rcc.o(.text.RCC_GetClocksFreq)
-    [Anonymous Symbol]                       0x08003fb4   Section        0  rgb.o(.text.RGB_Config)
-    [Anonymous Symbol]                       0x08004000   Section        0  rgb.o(.text.RGB_ls)
-    [Anonymous Symbol]                       0x080040d8   Section        0  spi.o(.text.SPI_RC522_Init)
-    [Anonymous Symbol]                       0x0800419c   Section        0  stm32f10x_it.o(.text.SVC_Handler)
-    SetSysClock                              0x080041a1   Thumb Code     8  system_stm32f10x.o(.text.SetSysClock)
-    [Anonymous Symbol]                       0x080041a0   Section        0  system_stm32f10x.o(.text.SetSysClock)
-    SetSysClockTo72                          0x080041a9   Thumb Code   290  system_stm32f10x.o(.text.SetSysClockTo72)
-    [Anonymous Symbol]                       0x080041a8   Section        0  system_stm32f10x.o(.text.SetSysClockTo72)
-    [Anonymous Symbol]                       0x080042cc   Section        0  spi.o(.text.Soft_SPI_Read)
-    [Anonymous Symbol]                       0x0800434c   Section        0  spi.o(.text.Soft_SPI_Write)
-    SysTick_Config                           0x080043e1   Thumb Code    82  delay.o(.text.SysTick_Config)
-    [Anonymous Symbol]                       0x080043e0   Section        0  delay.o(.text.SysTick_Config)
-    [Anonymous Symbol]                       0x08004434   Section        0  delay.o(.text.SysTick_Handler)
-    [Anonymous Symbol]                       0x080045f8   Section        0  system_stm32f10x.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x08004660   Section        0  usart1.o(.text.USART1_Config)
-    [Anonymous Symbol]                       0x080046f0   Section        0  usart1.o(.text.USART1_IRQHandler)
-    [Anonymous Symbol]                       0x0800478c   Section        0  esp8266.o(.text.USART3_IRQHandler)
-    [Anonymous Symbol]                       0x0800489c   Section        0  stm32f10x_usart.o(.text.USART_ClearITPendingBit)
-    [Anonymous Symbol]                       0x080048e0   Section        0  stm32f10x_usart.o(.text.USART_Cmd)
-    [Anonymous Symbol]                       0x0800490c   Section        0  stm32f10x_usart.o(.text.USART_GetFlagStatus)
-    [Anonymous Symbol]                       0x08004950   Section        0  stm32f10x_usart.o(.text.USART_GetITStatus)
-    [Anonymous Symbol]                       0x08004a00   Section        0  stm32f10x_usart.o(.text.USART_ITConfig)
-    [Anonymous Symbol]                       0x08004a94   Section        0  stm32f10x_usart.o(.text.USART_Init)
-    [Anonymous Symbol]                       0x08004bf0   Section        0  stm32f10x_usart.o(.text.USART_ReceiveData)
-    [Anonymous Symbol]                       0x08004c00   Section        0  stm32f10x_usart.o(.text.USART_SendData)
-    [Anonymous Symbol]                       0x08004c18   Section        0  aliyun.o(.text.Up_Data)
-    [Anonymous Symbol]                       0x08004c90   Section        0  stm32f10x_it.o(.text.UsageFault_Handler)
-    [Anonymous Symbol]                       0x08004c94   Section        0  esp8266.o(.text.Usart3_SendByte)
-    [Anonymous Symbol]                       0x08004cc8   Section        0  esp8266.o(.text.Usart3_SendStr)
-    [Anonymous Symbol]                       0x08004d0c   Section        0  esp8266.o(.text.WIFI_ClearDat)
-    [Anonymous Symbol]                       0x08004d34   Section        0  esp8266.o(.text.WIFI_CloseTransmission)
-    [Anonymous Symbol]                       0x08004d60   Section        0  esp8266.o(.text.WIFI_ConnectServer)
-    [Anonymous Symbol]                       0x08004e3c   Section        0  esp8266.o(.text.WIFI_SendBuff)
-    [Anonymous Symbol]                       0x08004e88   Section        0  esp8266.o(.text.Wifi_Init)
-    __NVIC_EnableIRQ                         0x08004f0d   Thumb Code    48  usart1.o(.text.__NVIC_EnableIRQ)
-    [Anonymous Symbol]                       0x08004f0c   Section        0  usart1.o(.text.__NVIC_EnableIRQ)
-    __NVIC_SetPriority                       0x08004f3d   Thumb Code    66  delay.o(.text.__NVIC_SetPriority)
-    [Anonymous Symbol]                       0x08004f3c   Section        0  delay.o(.text.__NVIC_SetPriority)
-    __NVIC_SetPriority                       0x08004f81   Thumb Code    66  usart1.o(.text.__NVIC_SetPriority)
-    [Anonymous Symbol]                       0x08004f80   Section        0  usart1.o(.text.__NVIC_SetPriority)
-    [Anonymous Symbol]                       0x08004fc4   Section        0  usart1.o(.text.fputc)
-    [Anonymous Symbol]                       0x08004ff8   Section        0  main.o(.text.main)
-    [Anonymous Symbol]                       0x08005448   Section        0  lcd.o(.text.show_xXx)
-    [Anonymous Symbol]                       0x08005520   Section        0  utils_md5.o(.text.utils_hb2hex)
-    [Anonymous Symbol]                       0x08005558   Section        0  utils_hmac.o(.text.utils_hmac_sha1)
-    [Anonymous Symbol]                       0x08005680   Section        0  utils_sha1.o(.text.utils_sha1_finish)
-    [Anonymous Symbol]                       0x080057cc   Section        0  utils_sha1.o(.text.utils_sha1_init)
-    [Anonymous Symbol]                       0x080057e0   Section        0  utils_sha1.o(.text.utils_sha1_process)
-    [Anonymous Symbol]                       0x08006dc0   Section        0  utils_sha1.o(.text.utils_sha1_starts)
-    [Anonymous Symbol]                       0x08006e10   Section        0  utils_sha1.o(.text.utils_sha1_update)
-    [Anonymous Symbol]                       0x08006ed0   Section        0  mqttpacket.o(.text.writeCString)
-    [Anonymous Symbol]                       0x08006f04   Section        0  mqttpacket.o(.text.writeChar)
-    [Anonymous Symbol]                       0x08006f24   Section        0  mqttpacket.o(.text.writeInt)
-    [Anonymous Symbol]                       0x08006f58   Section        0  mqttpacket.o(.text.writeMQTTString)
-    i.__0printf                              0x08006fac   Section        0  printfa.o(i.__0printf)
-    i.__0sprintf                             0x08006fcc   Section        0  printfa.o(i.__0sprintf)
-    i.__scatterload_copy                     0x08006ff4   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x08007002   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x08007004   Section       14  handlers.o(i.__scatterload_zeroinit)
-    _fp_digits                               0x08007015   Thumb Code   366  printfa.o(i._fp_digits)
-    i._fp_digits                             0x08007014   Section        0  printfa.o(i._fp_digits)
-    _printf_core                             0x08007199   Thumb Code  1744  printfa.o(i._printf_core)
-    i._printf_core                           0x08007198   Section        0  printfa.o(i._printf_core)
-    _printf_post_padding                     0x08007875   Thumb Code    36  printfa.o(i._printf_post_padding)
-    i._printf_post_padding                   0x08007874   Section        0  printfa.o(i._printf_post_padding)
-    _printf_pre_padding                      0x08007899   Thumb Code    46  printfa.o(i._printf_pre_padding)
-    i._printf_pre_padding                    0x08007898   Section        0  printfa.o(i._printf_pre_padding)
-    _sputc                                   0x080078c7   Thumb Code    10  printfa.o(i._sputc)
-    i._sputc                                 0x080078c6   Section        0  printfa.o(i._sputc)
-    .L__const.ADC_Config.adc                 0x080078d0   Data          20  adc.o(.rodata..L__const.ADC_Config.adc)
-    .L__const.MyMQTT_Connect.data            0x080078e4   Data          88  aliyun.o(.rodata..L__const.MyMQTT_Connect.data)
-    ADCPrescTable                            0x0800793c   Data           4  stm32f10x_rcc.o(.rodata.ADCPrescTable)
-    [Anonymous Symbol]                       0x0800793c   Section        0  stm32f10x_rcc.o(.rodata.ADCPrescTable)
-    APBAHBPrescTable                         0x08007940   Data          16  stm32f10x_rcc.o(.rodata.APBAHBPrescTable)
-    [Anonymous Symbol]                       0x08007940   Section        0  stm32f10x_rcc.o(.rodata.APBAHBPrescTable)
-    iot_sha1_padding                         0x08008e44   Data          64  utils_sha1.o(.rodata.iot_sha1_padding)
-    [Anonymous Symbol]                       0x08008e44   Section        0  utils_sha1.o(.rodata.iot_sha1_padding)
-    .L.str                                   0x08008e84   Data          29  main.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x08008e84   Section        0  main.o(.rodata.str1.1)
-    .L.str.4                                 0x08008ea1   Data          26  main.o(.rodata.str1.1)
-    .L.str.2                                 0x08008ebb   Data          18  main.o(.rodata.str1.1)
-    .L.str.1                                 0x08008ecd   Data           9  main.o(.rodata.str1.1)
-    .L.str.3                                 0x08008ed6   Data           4  main.o(.rodata.str1.1)
-    .L.str.6                                 0x08008eda   Data          24  delay.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x08008eda   Section        0  delay.o(.rodata.str1.1)
-    .L.str.5                                 0x08008ef2   Data          24  delay.o(.rodata.str1.1)
-    .L.str.4                                 0x08008f0a   Data          23  delay.o(.rodata.str1.1)
-    .L.str.3                                 0x08008f21   Data          22  delay.o(.rodata.str1.1)
-    .L.str.2                                 0x08008f37   Data          21  delay.o(.rodata.str1.1)
-    .L.str.1                                 0x08008f4c   Data          20  delay.o(.rodata.str1.1)
-    .L.str                                   0x08008f60   Data          19  delay.o(.rodata.str1.1)
-    .L.str.10                                0x08008f73   Data          31  esp8266.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x08008f73   Section        0  esp8266.o(.rodata.str1.1)
-    .L.str.2                                 0x08008f78   Data           7  esp8266.o(.rodata.str1.1)
-    .L.str.3                                 0x08008f7f   Data          29  esp8266.o(.rodata.str1.1)
-    .L.str.12                                0x08008f92   Data           6  esp8266.o(.rodata.str1.1)
-    .L.str.17                                0x08008f98   Data          15  esp8266.o(.rodata.str1.1)
-    .L.str.4                                 0x08008f9c   Data          10  esp8266.o(.rodata.str1.1)
-    .L.str.8                                 0x08008fa7   Data          14  esp8266.o(.rodata.str1.1)
-    .L.str.20                                0x08008fb5   Data          25  esp8266.o(.rodata.str1.1)
-    .L.str.18                                0x08008fce   Data          13  esp8266.o(.rodata.str1.1)
-    .L.str.5                                 0x08008fdb   Data           5  esp8266.o(.rodata.str1.1)
-    .L.str.13                                0x08008fe0   Data          27  esp8266.o(.rodata.str1.1)
-    .L.str.15                                0x08008ffb   Data          17  esp8266.o(.rodata.str1.1)
-    .L.str.9                                 0x0800900c   Data          14  esp8266.o(.rodata.str1.1)
-    .L.str.7                                 0x0800901a   Data          16  esp8266.o(.rodata.str1.1)
-    .L.str.11                                0x0800902a   Data          13  esp8266.o(.rodata.str1.1)
-    .L.str.16                                0x08009037   Data          17  esp8266.o(.rodata.str1.1)
-    .L.str.17                                0x08009045   Data           3  esp8266.o(.rodata.str1.1)
-    .L.str.19                                0x08009048   Data           2  esp8266.o(.rodata.str1.1)
-    .L.str.6                                 0x0800904a   Data           3  esp8266.o(.rodata.str1.1)
-    .L.str.14                                0x0800904d   Data           8  esp8266.o(.rodata.str1.1)
-    .L.str.1                                 0x08009055   Data           2  esp8266.o(.rodata.str1.1)
-    .L.str.10                                0x08009057   Data          18  aliyun.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x08009057   Section        0  aliyun.o(.rodata.str1.1)
-    .L.str.11                                0x08009069   Data          15  aliyun.o(.rodata.str1.1)
-    .L.str.13                                0x08009078   Data          15  aliyun.o(.rodata.str1.1)
-    .L.str.12                                0x08009087   Data          15  aliyun.o(.rodata.str1.1)
-    .L.str.21                                0x08009088   Data          18  esp8266.o(.rodata.str1.1)
-    .L.str.15                                0x08009096   Data          15  aliyun.o(.rodata.str1.1)
-    .L.str.22                                0x0800909a   Data          13  esp8266.o(.rodata.str1.1)
-    .L.str.16                                0x080090a5   Data           6  aliyun.o(.rodata.str1.1)
-    .L.str.23                                0x080090a7   Data          12  esp8266.o(.rodata.str1.1)
-    .L.str.14                                0x080090ab   Data           4  aliyun.o(.rodata.str1.1)
-    .L.str.5                                 0x080090af   Data          33  aliyun.o(.rodata.str1.1)
-    .L.str.24                                0x080090b3   Data           7  esp8266.o(.rodata.str1.1)
-    .L.str.25                                0x080090ba   Data           7  esp8266.o(.rodata.str1.1)
-    .L.str.1                                 0x080090d0   Data          16  aliyun.o(.rodata.str1.1)
-    .L.str.3                                 0x080090e0   Data          12  aliyun.o(.rodata.str1.1)
-    .L.str.6                                 0x080090ec   Data          40  aliyun.o(.rodata.str1.1)
-    .L.str.2                                 0x08009114   Data           6  aliyun.o(.rodata.str1.1)
-    .L.str.4                                 0x0800911a   Data          35  aliyun.o(.rodata.str1.1)
-    .L.str                                   0x0800913a   Data           3  aliyun.o(.rodata.str1.1)
-    .L.str.9                                 0x0800913d   Data          38  aliyun.o(.rodata.str1.1)
-    .L.str.7                                 0x08009163   Data          37  aliyun.o(.rodata.str1.1)
-    .L.str.8                                 0x08009188   Data          43  aliyun.o(.rodata.str1.1)
-    .L.str                                   0x080091b3   Data          37  aliyun.o(.rodata.str1.1)
-    .L.str.31                                0x080091d8   Data         242  aliyun.o(.rodata.str1.1)
-    .L.str.18                                0x080091db   Data          23  aliyun.o(.rodata.str1.1)
-    .L.str.19                                0x080091f2   Data           7  aliyun.o(.rodata.str1.1)
-    .L.str.20                                0x080091f9   Data          26  aliyun.o(.rodata.str1.1)
-    .L.str.21                                0x08009213   Data          27  aliyun.o(.rodata.str1.1)
-    .L.str.22                                0x0800922e   Data          15  aliyun.o(.rodata.str1.1)
-    .L.str.23                                0x0800923d   Data          10  aliyun.o(.rodata.str1.1)
-    .L.str.24                                0x08009247   Data          16  aliyun.o(.rodata.str1.1)
-    .L.str.25                                0x08009257   Data           8  aliyun.o(.rodata.str1.1)
-    .L.str.26                                0x0800925f   Data          10  aliyun.o(.rodata.str1.1)
-    .L.str.27                                0x08009269   Data         141  aliyun.o(.rodata.str1.1)
-    .L.str.4                                 0x080092ca   Data          11  mfrc522.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x080092ca   Section        0  mfrc522.o(.rodata.str1.1)
-    .L.str.1                                 0x080092d5   Data          20  mfrc522.o(.rodata.str1.1)
-    .L.str.3                                 0x080092e9   Data          20  mfrc522.o(.rodata.str1.1)
-    .L.str.28                                0x080092f6   Data          15  aliyun.o(.rodata.str1.1)
-    .L.str.2                                 0x080092fd   Data          25  mfrc522.o(.rodata.str1.1)
-    .L.str.29                                0x08009305   Data          15  aliyun.o(.rodata.str1.1)
-    .L.str.30                                0x08009314   Data          15  aliyun.o(.rodata.str1.1)
-    .L.str                                   0x08009316   Data          18  mfrc522.o(.rodata.str1.1)
-    .L.str.6                                 0x08009328   Data           2  app.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x08009328   Section        0  app.o(.rodata.str1.1)
-    .L.str.11                                0x0800932a   Data          23  app.o(.rodata.str1.1)
-    .L.str.10                                0x08009341   Data           4  app.o(.rodata.str1.1)
-    .L.str.3                                 0x08009345   Data           7  app.o(.rodata.str1.1)
-    .L.str.5                                 0x0800934c   Data           5  app.o(.rodata.str1.1)
-    .L.str.9                                 0x08009351   Data           9  app.o(.rodata.str1.1)
-    .L.str.7                                 0x0800935a   Data           9  app.o(.rodata.str1.1)
-    .L.str.8                                 0x08009363   Data           9  app.o(.rodata.str1.1)
-    .L.str.4                                 0x0800936c   Data           9  app.o(.rodata.str1.1)
-    .L.str                                   0x08009375   Data           5  mqttconnectclient.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x08009375   Section        0  mqttconnectclient.o(.rodata.str1.1)
-    .L.str.1                                 0x0800937a   Data           7  mqttconnectclient.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x08002044   Section        0  key.o(.text.KEY_Scan)
+    [Anonymous Symbol]                       0x080021b0   Section        0  key.o(.text.Key_Config)
+    [Anonymous Symbol]                       0x080021ec   Section        0  key.o(.text.Key_GetValue)
+    [Anonymous Symbol]                       0x08002358   Section        0  lcd.o(.text.LCD_Clear)
+    [Anonymous Symbol]                       0x080023b0   Section        0  lcd.o(.text.LCD_DisplayOn)
+    [Anonymous Symbol]                       0x080023c4   Section        0  lcd.o(.text.LCD_Display_Dir)
+    [Anonymous Symbol]                       0x08002488   Section        0  lcd.o(.text.LCD_DrawPoint)
+    [Anonymous Symbol]                       0x080024bc   Section        0  lcd.o(.text.LCD_FSMC_Config)
+    [Anonymous Symbol]                       0x08002534   Section        0  lcd.o(.text.LCD_Fill)
+    [Anonymous Symbol]                       0x080025d4   Section        0  lcd.o(.text.LCD_GPIO_Config)
+    [Anonymous Symbol]                       0x08002694   Section        0  lcd.o(.text.LCD_Init)
+    [Anonymous Symbol]                       0x080026b8   Section        0  lcd.o(.text.LCD_RD_DATA)
+    [Anonymous Symbol]                       0x080026c4   Section        0  lcd.o(.text.LCD_ReadReg)
+    [Anonymous Symbol]                       0x080026e4   Section        0  lcd.o(.text.LCD_Scan_Dir)
+    [Anonymous Symbol]                       0x08002944   Section        0  lcd.o(.text.LCD_SetCursor)
+    [Anonymous Symbol]                       0x080029bc   Section        0  lcd.o(.text.LCD_Show_Photo)
+    [Anonymous Symbol]                       0x08002a44   Section        0  lcd.o(.text.LCD_WR_DATA)
+    [Anonymous Symbol]                       0x08002a5c   Section        0  lcd.o(.text.LCD_WR_REG)
+    [Anonymous Symbol]                       0x08002a74   Section        0  lcd.o(.text.LCD_WriteRAM_Prepare)
+    [Anonymous Symbol]                       0x08002a8c   Section        0  lcd.o(.text.LCD_WriteReg)
+    [Anonymous Symbol]                       0x08002ab8   Section        0  lcd.o(.text.LCD_init_RGB)
+    [Anonymous Symbol]                       0x08002dc0   Section        0  led.o(.text.LED_Config)
+    [Anonymous Symbol]                       0x08002e20   Section        0  mfrc522.o(.text.MFRC522_Add_IC)
+    [Anonymous Symbol]                       0x08002ee0   Section        0  mfrc522.o(.text.MFRC522_Add_IC1)
+    [Anonymous Symbol]                       0x08002fa0   Section        0  mfrc522.o(.text.MFRC_CalulateCRC)
+    [Anonymous Symbol]                       0x08003054   Section        0  mfrc522.o(.text.MFRC_ClrBitMask)
+    [Anonymous Symbol]                       0x08003084   Section        0  mfrc522.o(.text.MFRC_CmdFrame)
+    [Anonymous Symbol]                       0x08003294   Section        0  mfrc522.o(.text.MFRC_Init)
+    [Anonymous Symbol]                       0x0800329c   Section        0  mfrc522.o(.text.MFRC_ReadReg)
+    [Anonymous Symbol]                       0x080032e0   Section        0  mfrc522.o(.text.MFRC_SetBitMask)
+    [Anonymous Symbol]                       0x08003310   Section        0  mfrc522.o(.text.MFRC_WriteReg)
+    [Anonymous Symbol]                       0x08003354   Section        0  mqttpacket.o(.text.MQTTPacket_encode)
+    [Anonymous Symbol]                       0x080033b4   Section        0  mqttpacket.o(.text.MQTTPacket_len)
+    [Anonymous Symbol]                       0x0800340c   Section        0  mqttconnectclient.o(.text.MQTTSerialize_connect)
+    [Anonymous Symbol]                       0x080035fc   Section        0  mqttconnectclient.o(.text.MQTTSerialize_connectLength)
+    [Anonymous Symbol]                       0x080036c0   Section        0  mqttserializepublish.o(.text.MQTTSerialize_publish)
+    [Anonymous Symbol]                       0x080037dc   Section        0  mqttserializepublish.o(.text.MQTTSerialize_publishLength)
+    [Anonymous Symbol]                       0x0800381c   Section        0  mqttpacket.o(.text.MQTTstrlen)
+    [Anonymous Symbol]                       0x08003848   Section        0  stm32f10x_it.o(.text.MemManage_Handler)
+    [Anonymous Symbol]                       0x0800384c   Section        0  aliyun.o(.text.MyMQTT_Connect)
+    [Anonymous Symbol]                       0x08003934   Section        0  aliyun.o(.text.MyMQTT_Publish)
+    [Anonymous Symbol]                       0x080039f4   Section        0  stm32f10x_it.o(.text.NMI_Handler)
+    [Anonymous Symbol]                       0x080039f8   Section        0  misc.o(.text.NVIC_Init)
+    [Anonymous Symbol]                       0x08003aa4   Section        0  mfrc522.o(.text.PCD_AntennaOff)
+    [Anonymous Symbol]                       0x08003ab0   Section        0  mfrc522.o(.text.PCD_AntennaOn)
+    [Anonymous Symbol]                       0x08003ad8   Section        0  mfrc522.o(.text.PCD_Anticoll)
+    [Anonymous Symbol]                       0x08003b94   Section        0  mfrc522.o(.text.PCD_AuthState)
+    [Anonymous Symbol]                       0x08003c54   Section        0  mfrc522.o(.text.PCD_Init)
+    [Anonymous Symbol]                       0x08003c60   Section        0  mfrc522.o(.text.PCD_Request)
+    [Anonymous Symbol]                       0x08003cd0   Section        0  mfrc522.o(.text.PCD_Reset)
+    [Anonymous Symbol]                       0x08003d58   Section        0  mfrc522.o(.text.PCD_Select)
+    [Anonymous Symbol]                       0x08003e08   Section        0  mfrc522.o(.text.PCD_WriteBlock)
+    [Anonymous Symbol]                       0x08003efc   Section        0  stm32f10x_it.o(.text.PendSV_Handler)
+    [Anonymous Symbol]                       0x08003f00   Section        0  stm32f10x_rcc.o(.text.RCC_ADCCLKConfig)
+    [Anonymous Symbol]                       0x08003f2c   Section        0  stm32f10x_rcc.o(.text.RCC_AHBPeriphClockCmd)
+    [Anonymous Symbol]                       0x08003f64   Section        0  stm32f10x_rcc.o(.text.RCC_APB1PeriphClockCmd)
+    [Anonymous Symbol]                       0x08003f9c   Section        0  stm32f10x_rcc.o(.text.RCC_APB2PeriphClockCmd)
+    [Anonymous Symbol]                       0x08003fd4   Section        0  stm32f10x_rcc.o(.text.RCC_GetClocksFreq)
+    [Anonymous Symbol]                       0x08004148   Section        0  rgb.o(.text.RGB_Config)
+    [Anonymous Symbol]                       0x08004194   Section        0  rgb.o(.text.RGB_ls)
+    [Anonymous Symbol]                       0x0800426c   Section        0  spi.o(.text.SPI_RC522_Init)
+    [Anonymous Symbol]                       0x08004330   Section        0  stm32f10x_it.o(.text.SVC_Handler)
+    SetSysClock                              0x08004335   Thumb Code     8  system_stm32f10x.o(.text.SetSysClock)
+    [Anonymous Symbol]                       0x08004334   Section        0  system_stm32f10x.o(.text.SetSysClock)
+    SetSysClockTo72                          0x0800433d   Thumb Code   290  system_stm32f10x.o(.text.SetSysClockTo72)
+    [Anonymous Symbol]                       0x0800433c   Section        0  system_stm32f10x.o(.text.SetSysClockTo72)
+    [Anonymous Symbol]                       0x08004460   Section        0  spi.o(.text.Soft_SPI_Read)
+    [Anonymous Symbol]                       0x080044e0   Section        0  spi.o(.text.Soft_SPI_Write)
+    SysTick_Config                           0x08004575   Thumb Code    82  delay.o(.text.SysTick_Config)
+    [Anonymous Symbol]                       0x08004574   Section        0  delay.o(.text.SysTick_Config)
+    [Anonymous Symbol]                       0x080045c8   Section        0  delay.o(.text.SysTick_Handler)
+    [Anonymous Symbol]                       0x0800478c   Section        0  system_stm32f10x.o(.text.SystemInit)
+    [Anonymous Symbol]                       0x080047f4   Section        0  usart1.o(.text.USART1_Config)
+    [Anonymous Symbol]                       0x08004884   Section        0  usart1.o(.text.USART1_IRQHandler)
+    [Anonymous Symbol]                       0x08004920   Section        0  esp8266.o(.text.USART3_IRQHandler)
+    [Anonymous Symbol]                       0x08004a30   Section        0  stm32f10x_usart.o(.text.USART_ClearITPendingBit)
+    [Anonymous Symbol]                       0x08004a74   Section        0  stm32f10x_usart.o(.text.USART_Cmd)
+    [Anonymous Symbol]                       0x08004aa0   Section        0  stm32f10x_usart.o(.text.USART_GetFlagStatus)
+    [Anonymous Symbol]                       0x08004ae4   Section        0  stm32f10x_usart.o(.text.USART_GetITStatus)
+    [Anonymous Symbol]                       0x08004b94   Section        0  stm32f10x_usart.o(.text.USART_ITConfig)
+    [Anonymous Symbol]                       0x08004c28   Section        0  stm32f10x_usart.o(.text.USART_Init)
+    [Anonymous Symbol]                       0x08004d84   Section        0  stm32f10x_usart.o(.text.USART_ReceiveData)
+    [Anonymous Symbol]                       0x08004d94   Section        0  stm32f10x_usart.o(.text.USART_SendData)
+    [Anonymous Symbol]                       0x08004dac   Section        0  aliyun.o(.text.Up_Data)
+    [Anonymous Symbol]                       0x08004e24   Section        0  stm32f10x_it.o(.text.UsageFault_Handler)
+    [Anonymous Symbol]                       0x08004e28   Section        0  esp8266.o(.text.Usart3_SendByte)
+    [Anonymous Symbol]                       0x08004e5c   Section        0  esp8266.o(.text.Usart3_SendStr)
+    [Anonymous Symbol]                       0x08004ea0   Section        0  esp8266.o(.text.WIFI_ClearDat)
+    [Anonymous Symbol]                       0x08004ec8   Section        0  esp8266.o(.text.WIFI_CloseTransmission)
+    [Anonymous Symbol]                       0x08004ef4   Section        0  esp8266.o(.text.WIFI_ConnectServer)
+    [Anonymous Symbol]                       0x08004fd0   Section        0  esp8266.o(.text.WIFI_SendBuff)
+    [Anonymous Symbol]                       0x0800501c   Section        0  esp8266.o(.text.Wifi_Init)
+    __NVIC_EnableIRQ                         0x080050a1   Thumb Code    48  usart1.o(.text.__NVIC_EnableIRQ)
+    [Anonymous Symbol]                       0x080050a0   Section        0  usart1.o(.text.__NVIC_EnableIRQ)
+    __NVIC_SetPriority                       0x080050d1   Thumb Code    66  delay.o(.text.__NVIC_SetPriority)
+    [Anonymous Symbol]                       0x080050d0   Section        0  delay.o(.text.__NVIC_SetPriority)
+    __NVIC_SetPriority                       0x08005115   Thumb Code    66  usart1.o(.text.__NVIC_SetPriority)
+    [Anonymous Symbol]                       0x08005114   Section        0  usart1.o(.text.__NVIC_SetPriority)
+    [Anonymous Symbol]                       0x08005158   Section        0  usart1.o(.text.fputc)
+    [Anonymous Symbol]                       0x0800518c   Section        0  main.o(.text.main)
+    [Anonymous Symbol]                       0x080055e0   Section        0  lcd.o(.text.show_xXx)
+    [Anonymous Symbol]                       0x080056b8   Section        0  utils_md5.o(.text.utils_hb2hex)
+    [Anonymous Symbol]                       0x080056f0   Section        0  utils_hmac.o(.text.utils_hmac_sha1)
+    [Anonymous Symbol]                       0x08005818   Section        0  utils_sha1.o(.text.utils_sha1_finish)
+    [Anonymous Symbol]                       0x08005964   Section        0  utils_sha1.o(.text.utils_sha1_init)
+    [Anonymous Symbol]                       0x08005978   Section        0  utils_sha1.o(.text.utils_sha1_process)
+    [Anonymous Symbol]                       0x08006f58   Section        0  utils_sha1.o(.text.utils_sha1_starts)
+    [Anonymous Symbol]                       0x08006fa8   Section        0  utils_sha1.o(.text.utils_sha1_update)
+    [Anonymous Symbol]                       0x08007068   Section        0  mqttpacket.o(.text.writeCString)
+    [Anonymous Symbol]                       0x0800709c   Section        0  mqttpacket.o(.text.writeChar)
+    [Anonymous Symbol]                       0x080070bc   Section        0  mqttpacket.o(.text.writeInt)
+    [Anonymous Symbol]                       0x080070f0   Section        0  mqttpacket.o(.text.writeMQTTString)
+    i.__0printf                              0x08007144   Section        0  printfa.o(i.__0printf)
+    i.__0sprintf                             0x08007164   Section        0  printfa.o(i.__0sprintf)
+    i.__scatterload_copy                     0x0800718c   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x0800719a   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x0800719c   Section       14  handlers.o(i.__scatterload_zeroinit)
+    _fp_digits                               0x080071ad   Thumb Code   366  printfa.o(i._fp_digits)
+    i._fp_digits                             0x080071ac   Section        0  printfa.o(i._fp_digits)
+    _printf_core                             0x08007331   Thumb Code  1744  printfa.o(i._printf_core)
+    i._printf_core                           0x08007330   Section        0  printfa.o(i._printf_core)
+    _printf_post_padding                     0x08007a0d   Thumb Code    36  printfa.o(i._printf_post_padding)
+    i._printf_post_padding                   0x08007a0c   Section        0  printfa.o(i._printf_post_padding)
+    _printf_pre_padding                      0x08007a31   Thumb Code    46  printfa.o(i._printf_pre_padding)
+    i._printf_pre_padding                    0x08007a30   Section        0  printfa.o(i._printf_pre_padding)
+    _sputc                                   0x08007a5f   Thumb Code    10  printfa.o(i._sputc)
+    i._sputc                                 0x08007a5e   Section        0  printfa.o(i._sputc)
+    .L__const.ADC_Config.adc                 0x08007a68   Data          20  adc.o(.rodata..L__const.ADC_Config.adc)
+    .L__const.MyMQTT_Connect.data            0x08007a7c   Data          88  aliyun.o(.rodata..L__const.MyMQTT_Connect.data)
+    ADCPrescTable                            0x08007ad4   Data           4  stm32f10x_rcc.o(.rodata.ADCPrescTable)
+    [Anonymous Symbol]                       0x08007ad4   Section        0  stm32f10x_rcc.o(.rodata.ADCPrescTable)
+    APBAHBPrescTable                         0x08007ad8   Data          16  stm32f10x_rcc.o(.rodata.APBAHBPrescTable)
+    [Anonymous Symbol]                       0x08007ad8   Section        0  stm32f10x_rcc.o(.rodata.APBAHBPrescTable)
+    iot_sha1_padding                         0x08008fdc   Data          64  utils_sha1.o(.rodata.iot_sha1_padding)
+    [Anonymous Symbol]                       0x08008fdc   Section        0  utils_sha1.o(.rodata.iot_sha1_padding)
+    .L.str                                   0x0800901c   Data          29  main.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x0800901c   Section        0  main.o(.rodata.str1.1)
+    .L.str.4                                 0x08009039   Data          26  main.o(.rodata.str1.1)
+    .L.str.2                                 0x08009053   Data          18  main.o(.rodata.str1.1)
+    .L.str.1                                 0x08009065   Data           9  main.o(.rodata.str1.1)
+    .L.str.3                                 0x0800906e   Data           4  main.o(.rodata.str1.1)
+    .L.str.6                                 0x08009072   Data          24  delay.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x08009072   Section        0  delay.o(.rodata.str1.1)
+    .L.str.5                                 0x0800908a   Data          24  delay.o(.rodata.str1.1)
+    .L.str.4                                 0x080090a2   Data          23  delay.o(.rodata.str1.1)
+    .L.str.3                                 0x080090b9   Data          22  delay.o(.rodata.str1.1)
+    .L.str.2                                 0x080090cf   Data          21  delay.o(.rodata.str1.1)
+    .L.str.1                                 0x080090e4   Data          20  delay.o(.rodata.str1.1)
+    .L.str                                   0x080090f8   Data          19  delay.o(.rodata.str1.1)
+    .L.str.10                                0x0800910b   Data          31  esp8266.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x0800910b   Section        0  esp8266.o(.rodata.str1.1)
+    .L.str.2                                 0x08009110   Data           7  esp8266.o(.rodata.str1.1)
+    .L.str.3                                 0x08009117   Data          29  esp8266.o(.rodata.str1.1)
+    .L.str.12                                0x0800912a   Data           6  esp8266.o(.rodata.str1.1)
+    .L.str.17                                0x08009130   Data          15  esp8266.o(.rodata.str1.1)
+    .L.str.4                                 0x08009134   Data          10  esp8266.o(.rodata.str1.1)
+    .L.str.8                                 0x0800913f   Data          14  esp8266.o(.rodata.str1.1)
+    .L.str.20                                0x0800914d   Data          25  esp8266.o(.rodata.str1.1)
+    .L.str.18                                0x08009166   Data          13  esp8266.o(.rodata.str1.1)
+    .L.str.5                                 0x08009173   Data           5  esp8266.o(.rodata.str1.1)
+    .L.str.13                                0x08009178   Data          27  esp8266.o(.rodata.str1.1)
+    .L.str.15                                0x08009193   Data          17  esp8266.o(.rodata.str1.1)
+    .L.str.9                                 0x080091a4   Data          14  esp8266.o(.rodata.str1.1)
+    .L.str.7                                 0x080091b2   Data          16  esp8266.o(.rodata.str1.1)
+    .L.str.11                                0x080091c2   Data          13  esp8266.o(.rodata.str1.1)
+    .L.str.16                                0x080091cf   Data          17  esp8266.o(.rodata.str1.1)
+    .L.str.17                                0x080091dd   Data           3  esp8266.o(.rodata.str1.1)
+    .L.str.19                                0x080091e0   Data           2  esp8266.o(.rodata.str1.1)
+    .L.str.6                                 0x080091e2   Data           3  esp8266.o(.rodata.str1.1)
+    .L.str.14                                0x080091e5   Data           8  esp8266.o(.rodata.str1.1)
+    .L.str.1                                 0x080091ed   Data           2  esp8266.o(.rodata.str1.1)
+    .L.str.10                                0x080091ef   Data          18  aliyun.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x080091ef   Section        0  aliyun.o(.rodata.str1.1)
+    .L.str.11                                0x08009201   Data          15  aliyun.o(.rodata.str1.1)
+    .L.str.13                                0x08009210   Data          15  aliyun.o(.rodata.str1.1)
+    .L.str.12                                0x0800921f   Data          15  aliyun.o(.rodata.str1.1)
+    .L.str.21                                0x08009220   Data          18  esp8266.o(.rodata.str1.1)
+    .L.str.15                                0x0800922e   Data          15  aliyun.o(.rodata.str1.1)
+    .L.str.22                                0x08009232   Data          13  esp8266.o(.rodata.str1.1)
+    .L.str.16                                0x0800923d   Data           6  aliyun.o(.rodata.str1.1)
+    .L.str.23                                0x0800923f   Data          12  esp8266.o(.rodata.str1.1)
+    .L.str.14                                0x08009243   Data           4  aliyun.o(.rodata.str1.1)
+    .L.str.5                                 0x08009247   Data          33  aliyun.o(.rodata.str1.1)
+    .L.str.24                                0x0800924b   Data           7  esp8266.o(.rodata.str1.1)
+    .L.str.25                                0x08009252   Data           7  esp8266.o(.rodata.str1.1)
+    .L.str.1                                 0x08009268   Data          16  aliyun.o(.rodata.str1.1)
+    .L.str.3                                 0x08009278   Data          12  aliyun.o(.rodata.str1.1)
+    .L.str.6                                 0x08009284   Data          40  aliyun.o(.rodata.str1.1)
+    .L.str.2                                 0x080092ac   Data           6  aliyun.o(.rodata.str1.1)
+    .L.str.4                                 0x080092b2   Data          35  aliyun.o(.rodata.str1.1)
+    .L.str                                   0x080092d2   Data           3  aliyun.o(.rodata.str1.1)
+    .L.str.9                                 0x080092d5   Data          38  aliyun.o(.rodata.str1.1)
+    .L.str.7                                 0x080092fb   Data          37  aliyun.o(.rodata.str1.1)
+    .L.str.8                                 0x08009320   Data          43  aliyun.o(.rodata.str1.1)
+    .L.str                                   0x0800934b   Data          37  aliyun.o(.rodata.str1.1)
+    .L.str.31                                0x08009370   Data         242  aliyun.o(.rodata.str1.1)
+    .L.str.18                                0x08009373   Data          23  aliyun.o(.rodata.str1.1)
+    .L.str.19                                0x0800938a   Data           7  aliyun.o(.rodata.str1.1)
+    .L.str.20                                0x08009391   Data          26  aliyun.o(.rodata.str1.1)
+    .L.str.21                                0x080093ab   Data          27  aliyun.o(.rodata.str1.1)
+    .L.str.22                                0x080093c6   Data          15  aliyun.o(.rodata.str1.1)
+    .L.str.23                                0x080093d5   Data          10  aliyun.o(.rodata.str1.1)
+    .L.str.24                                0x080093df   Data          16  aliyun.o(.rodata.str1.1)
+    .L.str.25                                0x080093ef   Data           8  aliyun.o(.rodata.str1.1)
+    .L.str.26                                0x080093f7   Data          10  aliyun.o(.rodata.str1.1)
+    .L.str.27                                0x08009401   Data         141  aliyun.o(.rodata.str1.1)
+    .L.str.4                                 0x08009462   Data          11  mfrc522.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x08009462   Section        0  mfrc522.o(.rodata.str1.1)
+    .L.str.1                                 0x0800946d   Data          20  mfrc522.o(.rodata.str1.1)
+    .L.str.3                                 0x08009481   Data          20  mfrc522.o(.rodata.str1.1)
+    .L.str.28                                0x0800948e   Data          15  aliyun.o(.rodata.str1.1)
+    .L.str.2                                 0x08009495   Data          25  mfrc522.o(.rodata.str1.1)
+    .L.str.29                                0x0800949d   Data          15  aliyun.o(.rodata.str1.1)
+    .L.str.30                                0x080094ac   Data          15  aliyun.o(.rodata.str1.1)
+    .L.str                                   0x080094ae   Data          18  mfrc522.o(.rodata.str1.1)
+    .L.str.6                                 0x080094c0   Data           2  app.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x080094c0   Section        0  app.o(.rodata.str1.1)
+    .L.str.11                                0x080094c2   Data          23  app.o(.rodata.str1.1)
+    .L.str.10                                0x080094d9   Data           4  app.o(.rodata.str1.1)
+    .L.str.3                                 0x080094dd   Data           7  app.o(.rodata.str1.1)
+    .L.str.5                                 0x080094e4   Data           5  app.o(.rodata.str1.1)
+    .L.str.9                                 0x080094e9   Data           9  app.o(.rodata.str1.1)
+    .L.str.7                                 0x080094f2   Data           9  app.o(.rodata.str1.1)
+    .L.str.8                                 0x080094fb   Data           9  app.o(.rodata.str1.1)
+    .L.str.4                                 0x08009504   Data           9  app.o(.rodata.str1.1)
+    .L.str                                   0x0800950d   Data           5  mqttconnectclient.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x0800950d   Section        0  mqttconnectclient.o(.rodata.str1.1)
+    .L.str.1                                 0x08009512   Data           7  mqttconnectclient.o(.rodata.str1.1)
     .data                                    0x20000000   Section        4  stdout.o(.data)
+    KEY_Scan.key_up                          0x2000000a   Data           2  key.o(.data.KEY_Scan.key_up)
+    [Anonymous Symbol]                       0x2000000a   Section        0  key.o(.data.KEY_Scan.key_up)
     Charge_Choose_Num.laset_choose_mode      0x20000fb8   Data           1  app.o(.bss.Charge_Choose_Num.laset_choose_mode)
     [Anonymous Symbol]                       0x20000fb8   Section        0  app.o(.bss.Charge_Choose_Num.laset_choose_mode)
     Charge_Choose_Num.last_num               0x20000fb9   Data           1  app.o(.bss.Charge_Choose_Num.last_num)
@@ -4089,7 +4098,11 @@ Image Symbol Table
     [Anonymous Symbol]                       0x20000fba   Section        0  app.o(.bss.Charge_Choose_View.last_num)
     RGB_ls.state                             0x20000fc0   Data           2  rgb.o(.bss.RGB_ls.state)
     [Anonymous Symbol]                       0x20000fc0   Section        0  rgb.o(.bss.RGB_ls.state)
-    STACK                                    0x20001bd8   Section    16384  startup_stm32f10x_hd.o(STACK)
+    key_old                                  0x200013e8   Data           2  key.o(.bss.key_old)
+    [Anonymous Symbol]                       0x200013e8   Section        0  key.o(.bss.key_old)
+    num_on                                   0x20001400   Data           2  key.o(.bss.num_on)
+    [Anonymous Symbol]                       0x20001400   Section        0  key.o(.bss.num_on)
+    STACK                                    0x20001be0   Section    16384  startup_stm32f10x_hd.o(STACK)
 
     Global Symbols
 
@@ -4255,128 +4268,129 @@ Image Symbol Table
     GPIO_SetBits                             0x08001fe1   Thumb Code    20  stm32f10x_gpio.o(.text.GPIO_SetBits)
     GPIO_WriteBit                            0x08001ff5   Thumb Code    44  stm32f10x_gpio.o(.text.GPIO_WriteBit)
     HardFault_Handler                        0x08002021   Thumb Code     4  stm32f10x_it.o(.text.HardFault_Handler)
-    Key_Config                               0x08002045   Thumb Code    60  key.o(.text.Key_Config)
-    Key_GetValue                             0x08002081   Thumb Code   322  key.o(.text.Key_GetValue)
-    LCD_Clear                                0x080021c5   Thumb Code    88  lcd.o(.text.LCD_Clear)
-    LCD_DisplayOn                            0x0800221d   Thumb Code    18  lcd.o(.text.LCD_DisplayOn)
-    LCD_Display_Dir                          0x08002231   Thumb Code   196  lcd.o(.text.LCD_Display_Dir)
-    LCD_DrawPoint                            0x080022f5   Thumb Code    50  lcd.o(.text.LCD_DrawPoint)
-    LCD_FSMC_Config                          0x08002329   Thumb Code   120  lcd.o(.text.LCD_FSMC_Config)
-    LCD_Fill                                 0x080023a1   Thumb Code   158  lcd.o(.text.LCD_Fill)
-    LCD_GPIO_Config                          0x08002441   Thumb Code   190  lcd.o(.text.LCD_GPIO_Config)
-    LCD_Init                                 0x08002501   Thumb Code    34  lcd.o(.text.LCD_Init)
-    LCD_RD_DATA                              0x08002525   Thumb Code    12  lcd.o(.text.LCD_RD_DATA)
-    LCD_ReadReg                              0x08002531   Thumb Code    30  lcd.o(.text.LCD_ReadReg)
-    LCD_Scan_Dir                             0x08002551   Thumb Code   606  lcd.o(.text.LCD_Scan_Dir)
-    LCD_SetCursor                            0x080027b1   Thumb Code   118  lcd.o(.text.LCD_SetCursor)
-    LCD_Show_Photo                           0x08002829   Thumb Code   136  lcd.o(.text.LCD_Show_Photo)
-    LCD_WR_DATA                              0x080028b1   Thumb Code    24  lcd.o(.text.LCD_WR_DATA)
-    LCD_WR_REG                               0x080028c9   Thumb Code    24  lcd.o(.text.LCD_WR_REG)
-    LCD_WriteRAM_Prepare                     0x080028e1   Thumb Code    22  lcd.o(.text.LCD_WriteRAM_Prepare)
-    LCD_WriteReg                             0x080028f9   Thumb Code    42  lcd.o(.text.LCD_WriteReg)
-    LCD_init_RGB                             0x08002925   Thumb Code   776  lcd.o(.text.LCD_init_RGB)
-    LED_Config                               0x08002c2d   Thumb Code    94  led.o(.text.LED_Config)
-    MFRC522_Add_IC                           0x08002c8d   Thumb Code   192  mfrc522.o(.text.MFRC522_Add_IC)
-    MFRC522_Add_IC1                          0x08002d4d   Thumb Code   190  mfrc522.o(.text.MFRC522_Add_IC1)
-    MFRC_CalulateCRC                         0x08002e0d   Thumb Code   178  mfrc522.o(.text.MFRC_CalulateCRC)
-    MFRC_ClrBitMask                          0x08002ec1   Thumb Code    46  mfrc522.o(.text.MFRC_ClrBitMask)
-    MFRC_CmdFrame                            0x08002ef1   Thumb Code   528  mfrc522.o(.text.MFRC_CmdFrame)
-    MFRC_Init                                0x08003101   Thumb Code     8  mfrc522.o(.text.MFRC_Init)
-    MFRC_ReadReg                             0x08003109   Thumb Code    66  mfrc522.o(.text.MFRC_ReadReg)
-    MFRC_SetBitMask                          0x0800314d   Thumb Code    46  mfrc522.o(.text.MFRC_SetBitMask)
-    MFRC_WriteReg                            0x0800317d   Thumb Code    66  mfrc522.o(.text.MFRC_WriteReg)
-    MQTTPacket_encode                        0x080031c1   Thumb Code    94  mqttpacket.o(.text.MQTTPacket_encode)
-    MQTTPacket_len                           0x08003221   Thumb Code    86  mqttpacket.o(.text.MQTTPacket_len)
-    MQTTSerialize_connect                    0x08003279   Thumb Code   496  mqttconnectclient.o(.text.MQTTSerialize_connect)
-    MQTTSerialize_connectLength              0x08003469   Thumb Code   196  mqttconnectclient.o(.text.MQTTSerialize_connectLength)
-    MQTTSerialize_publish                    0x0800352d   Thumb Code   284  mqttserializepublish.o(.text.MQTTSerialize_publish)
-    MQTTSerialize_publishLength              0x08003649   Thumb Code    64  mqttserializepublish.o(.text.MQTTSerialize_publishLength)
-    MQTTstrlen                               0x08003689   Thumb Code    42  mqttpacket.o(.text.MQTTstrlen)
-    MemManage_Handler                        0x080036b5   Thumb Code     4  stm32f10x_it.o(.text.MemManage_Handler)
-    MyMQTT_Connect                           0x080036b9   Thumb Code   232  aliyun.o(.text.MyMQTT_Connect)
-    MyMQTT_Publish                           0x080037a1   Thumb Code   190  aliyun.o(.text.MyMQTT_Publish)
-    NMI_Handler                              0x08003861   Thumb Code     2  stm32f10x_it.o(.text.NMI_Handler)
-    NVIC_Init                                0x08003865   Thumb Code   170  misc.o(.text.NVIC_Init)
-    PCD_AntennaOff                           0x08003911   Thumb Code    12  mfrc522.o(.text.PCD_AntennaOff)
-    PCD_AntennaOn                            0x0800391d   Thumb Code    38  mfrc522.o(.text.PCD_AntennaOn)
-    PCD_Anticoll                             0x08003945   Thumb Code   186  mfrc522.o(.text.PCD_Anticoll)
-    PCD_AuthState                            0x08003a01   Thumb Code   190  mfrc522.o(.text.PCD_AuthState)
-    PCD_Init                                 0x08003ac1   Thumb Code    12  mfrc522.o(.text.PCD_Init)
-    PCD_Request                              0x08003acd   Thumb Code   110  mfrc522.o(.text.PCD_Request)
-    PCD_Reset                                0x08003b3d   Thumb Code   134  mfrc522.o(.text.PCD_Reset)
-    PCD_Select                               0x08003bc5   Thumb Code   174  mfrc522.o(.text.PCD_Select)
-    PCD_WriteBlock                           0x08003c75   Thumb Code   244  mfrc522.o(.text.PCD_WriteBlock)
-    PendSV_Handler                           0x08003d69   Thumb Code     2  stm32f10x_it.o(.text.PendSV_Handler)
-    RCC_ADCCLKConfig                         0x08003d6d   Thumb Code    44  stm32f10x_rcc.o(.text.RCC_ADCCLKConfig)
-    RCC_AHBPeriphClockCmd                    0x08003d99   Thumb Code    56  stm32f10x_rcc.o(.text.RCC_AHBPeriphClockCmd)
-    RCC_APB1PeriphClockCmd                   0x08003dd1   Thumb Code    56  stm32f10x_rcc.o(.text.RCC_APB1PeriphClockCmd)
-    RCC_APB2PeriphClockCmd                   0x08003e09   Thumb Code    56  stm32f10x_rcc.o(.text.RCC_APB2PeriphClockCmd)
-    RCC_GetClocksFreq                        0x08003e41   Thumb Code   370  stm32f10x_rcc.o(.text.RCC_GetClocksFreq)
-    RGB_Config                               0x08003fb5   Thumb Code    76  rgb.o(.text.RGB_Config)
-    RGB_ls                                   0x08004001   Thumb Code   216  rgb.o(.text.RGB_ls)
-    SPI_RC522_Init                           0x080040d9   Thumb Code   196  spi.o(.text.SPI_RC522_Init)
-    SVC_Handler                              0x0800419d   Thumb Code     2  stm32f10x_it.o(.text.SVC_Handler)
-    Soft_SPI_Read                            0x080042cd   Thumb Code   126  spi.o(.text.Soft_SPI_Read)
-    Soft_SPI_Write                           0x0800434d   Thumb Code   146  spi.o(.text.Soft_SPI_Write)
-    SysTick_Handler                          0x08004435   Thumb Code   452  delay.o(.text.SysTick_Handler)
-    SystemInit                               0x080045f9   Thumb Code   102  system_stm32f10x.o(.text.SystemInit)
-    USART1_Config                            0x08004661   Thumb Code   142  usart1.o(.text.USART1_Config)
-    USART1_IRQHandler                        0x080046f1   Thumb Code   154  usart1.o(.text.USART1_IRQHandler)
-    USART3_IRQHandler                        0x0800478d   Thumb Code   272  esp8266.o(.text.USART3_IRQHandler)
-    USART_ClearITPendingBit                  0x0800489d   Thumb Code    68  stm32f10x_usart.o(.text.USART_ClearITPendingBit)
-    USART_Cmd                                0x080048e1   Thumb Code    44  stm32f10x_usart.o(.text.USART_Cmd)
-    USART_GetFlagStatus                      0x0800490d   Thumb Code    68  stm32f10x_usart.o(.text.USART_GetFlagStatus)
-    USART_GetITStatus                        0x08004951   Thumb Code   176  stm32f10x_usart.o(.text.USART_GetITStatus)
-    USART_ITConfig                           0x08004a01   Thumb Code   146  stm32f10x_usart.o(.text.USART_ITConfig)
-    USART_Init                               0x08004a95   Thumb Code   348  stm32f10x_usart.o(.text.USART_Init)
-    USART_ReceiveData                        0x08004bf1   Thumb Code    16  stm32f10x_usart.o(.text.USART_ReceiveData)
-    USART_SendData                           0x08004c01   Thumb Code    24  stm32f10x_usart.o(.text.USART_SendData)
-    Up_Data                                  0x08004c19   Thumb Code   120  aliyun.o(.text.Up_Data)
-    UsageFault_Handler                       0x08004c91   Thumb Code     4  stm32f10x_it.o(.text.UsageFault_Handler)
-    Usart3_SendByte                          0x08004c95   Thumb Code    50  esp8266.o(.text.Usart3_SendByte)
-    Usart3_SendStr                           0x08004cc9   Thumb Code    66  esp8266.o(.text.Usart3_SendStr)
-    WIFI_ClearDat                            0x08004d0d   Thumb Code    38  esp8266.o(.text.WIFI_ClearDat)
-    WIFI_CloseTransmission                   0x08004d35   Thumb Code    44  esp8266.o(.text.WIFI_CloseTransmission)
-    WIFI_ConnectServer                       0x08004d61   Thumb Code   218  esp8266.o(.text.WIFI_ConnectServer)
-    WIFI_SendBuff                            0x08004e3d   Thumb Code    74  esp8266.o(.text.WIFI_SendBuff)
-    Wifi_Init                                0x08004e89   Thumb Code   130  esp8266.o(.text.Wifi_Init)
-    fputc                                    0x08004fc5   Thumb Code    52  usart1.o(.text.fputc)
-    main                                     0x08004ff9   Thumb Code  1104  main.o(.text.main)
-    show_xXx                                 0x08005449   Thumb Code   216  lcd.o(.text.show_xXx)
-    utils_hb2hex                             0x08005521   Thumb Code    56  utils_md5.o(.text.utils_hb2hex)
-    utils_hmac_sha1                          0x08005559   Thumb Code   294  utils_hmac.o(.text.utils_hmac_sha1)
-    utils_sha1_finish                        0x08005681   Thumb Code   332  utils_sha1.o(.text.utils_sha1_finish)
-    utils_sha1_init                          0x080057cd   Thumb Code    18  utils_sha1.o(.text.utils_sha1_init)
-    utils_sha1_process                       0x080057e1   Thumb Code  5598  utils_sha1.o(.text.utils_sha1_process)
-    utils_sha1_starts                        0x08006dc1   Thumb Code    78  utils_sha1.o(.text.utils_sha1_starts)
-    utils_sha1_update                        0x08006e11   Thumb Code   192  utils_sha1.o(.text.utils_sha1_update)
-    writeCString                             0x08006ed1   Thumb Code    50  mqttpacket.o(.text.writeCString)
-    writeChar                                0x08006f05   Thumb Code    30  mqttpacket.o(.text.writeChar)
-    writeInt                                 0x08006f25   Thumb Code    50  mqttpacket.o(.text.writeInt)
-    writeMQTTString                          0x08006f59   Thumb Code    84  mqttpacket.o(.text.writeMQTTString)
-    __0printf                                0x08006fad   Thumb Code    22  printfa.o(i.__0printf)
-    __1printf                                0x08006fad   Thumb Code     0  printfa.o(i.__0printf)
-    __2printf                                0x08006fad   Thumb Code     0  printfa.o(i.__0printf)
-    __c89printf                              0x08006fad   Thumb Code     0  printfa.o(i.__0printf)
-    printf                                   0x08006fad   Thumb Code     0  printfa.o(i.__0printf)
-    __0sprintf                               0x08006fcd   Thumb Code    34  printfa.o(i.__0sprintf)
-    __1sprintf                               0x08006fcd   Thumb Code     0  printfa.o(i.__0sprintf)
-    __2sprintf                               0x08006fcd   Thumb Code     0  printfa.o(i.__0sprintf)
-    __c89sprintf                             0x08006fcd   Thumb Code     0  printfa.o(i.__0sprintf)
-    sprintf                                  0x08006fcd   Thumb Code     0  printfa.o(i.__0sprintf)
-    __scatterload_copy                       0x08006ff5   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x08007003   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x08007005   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    gImage_money                             0x08007950   Data        1808  app.o(.rodata.gImage_money)
-    gImage_power                             0x08008060   Data        1808  app.o(.rodata.gImage_power)
-    gImage_time                              0x08008770   Data        1748  app.o(.rodata.gImage_time)
-    Region$$Table$$Base                      0x08009384   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x080093a4   Number         0  anon$$obj.o(Region$$Table)
+    KEY_Scan                                 0x08002045   Thumb Code   364  key.o(.text.KEY_Scan)
+    Key_Config                               0x080021b1   Thumb Code    60  key.o(.text.Key_Config)
+    Key_GetValue                             0x080021ed   Thumb Code   362  key.o(.text.Key_GetValue)
+    LCD_Clear                                0x08002359   Thumb Code    88  lcd.o(.text.LCD_Clear)
+    LCD_DisplayOn                            0x080023b1   Thumb Code    18  lcd.o(.text.LCD_DisplayOn)
+    LCD_Display_Dir                          0x080023c5   Thumb Code   196  lcd.o(.text.LCD_Display_Dir)
+    LCD_DrawPoint                            0x08002489   Thumb Code    50  lcd.o(.text.LCD_DrawPoint)
+    LCD_FSMC_Config                          0x080024bd   Thumb Code   120  lcd.o(.text.LCD_FSMC_Config)
+    LCD_Fill                                 0x08002535   Thumb Code   158  lcd.o(.text.LCD_Fill)
+    LCD_GPIO_Config                          0x080025d5   Thumb Code   190  lcd.o(.text.LCD_GPIO_Config)
+    LCD_Init                                 0x08002695   Thumb Code    34  lcd.o(.text.LCD_Init)
+    LCD_RD_DATA                              0x080026b9   Thumb Code    12  lcd.o(.text.LCD_RD_DATA)
+    LCD_ReadReg                              0x080026c5   Thumb Code    30  lcd.o(.text.LCD_ReadReg)
+    LCD_Scan_Dir                             0x080026e5   Thumb Code   606  lcd.o(.text.LCD_Scan_Dir)
+    LCD_SetCursor                            0x08002945   Thumb Code   118  lcd.o(.text.LCD_SetCursor)
+    LCD_Show_Photo                           0x080029bd   Thumb Code   136  lcd.o(.text.LCD_Show_Photo)
+    LCD_WR_DATA                              0x08002a45   Thumb Code    24  lcd.o(.text.LCD_WR_DATA)
+    LCD_WR_REG                               0x08002a5d   Thumb Code    24  lcd.o(.text.LCD_WR_REG)
+    LCD_WriteRAM_Prepare                     0x08002a75   Thumb Code    22  lcd.o(.text.LCD_WriteRAM_Prepare)
+    LCD_WriteReg                             0x08002a8d   Thumb Code    42  lcd.o(.text.LCD_WriteReg)
+    LCD_init_RGB                             0x08002ab9   Thumb Code   776  lcd.o(.text.LCD_init_RGB)
+    LED_Config                               0x08002dc1   Thumb Code    94  led.o(.text.LED_Config)
+    MFRC522_Add_IC                           0x08002e21   Thumb Code   192  mfrc522.o(.text.MFRC522_Add_IC)
+    MFRC522_Add_IC1                          0x08002ee1   Thumb Code   190  mfrc522.o(.text.MFRC522_Add_IC1)
+    MFRC_CalulateCRC                         0x08002fa1   Thumb Code   178  mfrc522.o(.text.MFRC_CalulateCRC)
+    MFRC_ClrBitMask                          0x08003055   Thumb Code    46  mfrc522.o(.text.MFRC_ClrBitMask)
+    MFRC_CmdFrame                            0x08003085   Thumb Code   528  mfrc522.o(.text.MFRC_CmdFrame)
+    MFRC_Init                                0x08003295   Thumb Code     8  mfrc522.o(.text.MFRC_Init)
+    MFRC_ReadReg                             0x0800329d   Thumb Code    66  mfrc522.o(.text.MFRC_ReadReg)
+    MFRC_SetBitMask                          0x080032e1   Thumb Code    46  mfrc522.o(.text.MFRC_SetBitMask)
+    MFRC_WriteReg                            0x08003311   Thumb Code    66  mfrc522.o(.text.MFRC_WriteReg)
+    MQTTPacket_encode                        0x08003355   Thumb Code    94  mqttpacket.o(.text.MQTTPacket_encode)
+    MQTTPacket_len                           0x080033b5   Thumb Code    86  mqttpacket.o(.text.MQTTPacket_len)
+    MQTTSerialize_connect                    0x0800340d   Thumb Code   496  mqttconnectclient.o(.text.MQTTSerialize_connect)
+    MQTTSerialize_connectLength              0x080035fd   Thumb Code   196  mqttconnectclient.o(.text.MQTTSerialize_connectLength)
+    MQTTSerialize_publish                    0x080036c1   Thumb Code   284  mqttserializepublish.o(.text.MQTTSerialize_publish)
+    MQTTSerialize_publishLength              0x080037dd   Thumb Code    64  mqttserializepublish.o(.text.MQTTSerialize_publishLength)
+    MQTTstrlen                               0x0800381d   Thumb Code    42  mqttpacket.o(.text.MQTTstrlen)
+    MemManage_Handler                        0x08003849   Thumb Code     4  stm32f10x_it.o(.text.MemManage_Handler)
+    MyMQTT_Connect                           0x0800384d   Thumb Code   232  aliyun.o(.text.MyMQTT_Connect)
+    MyMQTT_Publish                           0x08003935   Thumb Code   190  aliyun.o(.text.MyMQTT_Publish)
+    NMI_Handler                              0x080039f5   Thumb Code     2  stm32f10x_it.o(.text.NMI_Handler)
+    NVIC_Init                                0x080039f9   Thumb Code   170  misc.o(.text.NVIC_Init)
+    PCD_AntennaOff                           0x08003aa5   Thumb Code    12  mfrc522.o(.text.PCD_AntennaOff)
+    PCD_AntennaOn                            0x08003ab1   Thumb Code    38  mfrc522.o(.text.PCD_AntennaOn)
+    PCD_Anticoll                             0x08003ad9   Thumb Code   186  mfrc522.o(.text.PCD_Anticoll)
+    PCD_AuthState                            0x08003b95   Thumb Code   190  mfrc522.o(.text.PCD_AuthState)
+    PCD_Init                                 0x08003c55   Thumb Code    12  mfrc522.o(.text.PCD_Init)
+    PCD_Request                              0x08003c61   Thumb Code   110  mfrc522.o(.text.PCD_Request)
+    PCD_Reset                                0x08003cd1   Thumb Code   134  mfrc522.o(.text.PCD_Reset)
+    PCD_Select                               0x08003d59   Thumb Code   174  mfrc522.o(.text.PCD_Select)
+    PCD_WriteBlock                           0x08003e09   Thumb Code   244  mfrc522.o(.text.PCD_WriteBlock)
+    PendSV_Handler                           0x08003efd   Thumb Code     2  stm32f10x_it.o(.text.PendSV_Handler)
+    RCC_ADCCLKConfig                         0x08003f01   Thumb Code    44  stm32f10x_rcc.o(.text.RCC_ADCCLKConfig)
+    RCC_AHBPeriphClockCmd                    0x08003f2d   Thumb Code    56  stm32f10x_rcc.o(.text.RCC_AHBPeriphClockCmd)
+    RCC_APB1PeriphClockCmd                   0x08003f65   Thumb Code    56  stm32f10x_rcc.o(.text.RCC_APB1PeriphClockCmd)
+    RCC_APB2PeriphClockCmd                   0x08003f9d   Thumb Code    56  stm32f10x_rcc.o(.text.RCC_APB2PeriphClockCmd)
+    RCC_GetClocksFreq                        0x08003fd5   Thumb Code   370  stm32f10x_rcc.o(.text.RCC_GetClocksFreq)
+    RGB_Config                               0x08004149   Thumb Code    76  rgb.o(.text.RGB_Config)
+    RGB_ls                                   0x08004195   Thumb Code   216  rgb.o(.text.RGB_ls)
+    SPI_RC522_Init                           0x0800426d   Thumb Code   196  spi.o(.text.SPI_RC522_Init)
+    SVC_Handler                              0x08004331   Thumb Code     2  stm32f10x_it.o(.text.SVC_Handler)
+    Soft_SPI_Read                            0x08004461   Thumb Code   126  spi.o(.text.Soft_SPI_Read)
+    Soft_SPI_Write                           0x080044e1   Thumb Code   146  spi.o(.text.Soft_SPI_Write)
+    SysTick_Handler                          0x080045c9   Thumb Code   452  delay.o(.text.SysTick_Handler)
+    SystemInit                               0x0800478d   Thumb Code   102  system_stm32f10x.o(.text.SystemInit)
+    USART1_Config                            0x080047f5   Thumb Code   142  usart1.o(.text.USART1_Config)
+    USART1_IRQHandler                        0x08004885   Thumb Code   154  usart1.o(.text.USART1_IRQHandler)
+    USART3_IRQHandler                        0x08004921   Thumb Code   272  esp8266.o(.text.USART3_IRQHandler)
+    USART_ClearITPendingBit                  0x08004a31   Thumb Code    68  stm32f10x_usart.o(.text.USART_ClearITPendingBit)
+    USART_Cmd                                0x08004a75   Thumb Code    44  stm32f10x_usart.o(.text.USART_Cmd)
+    USART_GetFlagStatus                      0x08004aa1   Thumb Code    68  stm32f10x_usart.o(.text.USART_GetFlagStatus)
+    USART_GetITStatus                        0x08004ae5   Thumb Code   176  stm32f10x_usart.o(.text.USART_GetITStatus)
+    USART_ITConfig                           0x08004b95   Thumb Code   146  stm32f10x_usart.o(.text.USART_ITConfig)
+    USART_Init                               0x08004c29   Thumb Code   348  stm32f10x_usart.o(.text.USART_Init)
+    USART_ReceiveData                        0x08004d85   Thumb Code    16  stm32f10x_usart.o(.text.USART_ReceiveData)
+    USART_SendData                           0x08004d95   Thumb Code    24  stm32f10x_usart.o(.text.USART_SendData)
+    Up_Data                                  0x08004dad   Thumb Code   120  aliyun.o(.text.Up_Data)
+    UsageFault_Handler                       0x08004e25   Thumb Code     4  stm32f10x_it.o(.text.UsageFault_Handler)
+    Usart3_SendByte                          0x08004e29   Thumb Code    50  esp8266.o(.text.Usart3_SendByte)
+    Usart3_SendStr                           0x08004e5d   Thumb Code    66  esp8266.o(.text.Usart3_SendStr)
+    WIFI_ClearDat                            0x08004ea1   Thumb Code    38  esp8266.o(.text.WIFI_ClearDat)
+    WIFI_CloseTransmission                   0x08004ec9   Thumb Code    44  esp8266.o(.text.WIFI_CloseTransmission)
+    WIFI_ConnectServer                       0x08004ef5   Thumb Code   218  esp8266.o(.text.WIFI_ConnectServer)
+    WIFI_SendBuff                            0x08004fd1   Thumb Code    74  esp8266.o(.text.WIFI_SendBuff)
+    Wifi_Init                                0x0800501d   Thumb Code   130  esp8266.o(.text.Wifi_Init)
+    fputc                                    0x08005159   Thumb Code    52  usart1.o(.text.fputc)
+    main                                     0x0800518d   Thumb Code  1108  main.o(.text.main)
+    show_xXx                                 0x080055e1   Thumb Code   216  lcd.o(.text.show_xXx)
+    utils_hb2hex                             0x080056b9   Thumb Code    56  utils_md5.o(.text.utils_hb2hex)
+    utils_hmac_sha1                          0x080056f1   Thumb Code   294  utils_hmac.o(.text.utils_hmac_sha1)
+    utils_sha1_finish                        0x08005819   Thumb Code   332  utils_sha1.o(.text.utils_sha1_finish)
+    utils_sha1_init                          0x08005965   Thumb Code    18  utils_sha1.o(.text.utils_sha1_init)
+    utils_sha1_process                       0x08005979   Thumb Code  5598  utils_sha1.o(.text.utils_sha1_process)
+    utils_sha1_starts                        0x08006f59   Thumb Code    78  utils_sha1.o(.text.utils_sha1_starts)
+    utils_sha1_update                        0x08006fa9   Thumb Code   192  utils_sha1.o(.text.utils_sha1_update)
+    writeCString                             0x08007069   Thumb Code    50  mqttpacket.o(.text.writeCString)
+    writeChar                                0x0800709d   Thumb Code    30  mqttpacket.o(.text.writeChar)
+    writeInt                                 0x080070bd   Thumb Code    50  mqttpacket.o(.text.writeInt)
+    writeMQTTString                          0x080070f1   Thumb Code    84  mqttpacket.o(.text.writeMQTTString)
+    __0printf                                0x08007145   Thumb Code    22  printfa.o(i.__0printf)
+    __1printf                                0x08007145   Thumb Code     0  printfa.o(i.__0printf)
+    __2printf                                0x08007145   Thumb Code     0  printfa.o(i.__0printf)
+    __c89printf                              0x08007145   Thumb Code     0  printfa.o(i.__0printf)
+    printf                                   0x08007145   Thumb Code     0  printfa.o(i.__0printf)
+    __0sprintf                               0x08007165   Thumb Code    34  printfa.o(i.__0sprintf)
+    __1sprintf                               0x08007165   Thumb Code     0  printfa.o(i.__0sprintf)
+    __2sprintf                               0x08007165   Thumb Code     0  printfa.o(i.__0sprintf)
+    __c89sprintf                             0x08007165   Thumb Code     0  printfa.o(i.__0sprintf)
+    sprintf                                  0x08007165   Thumb Code     0  printfa.o(i.__0sprintf)
+    __scatterload_copy                       0x0800718d   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x0800719b   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x0800719d   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    gImage_money                             0x08007ae8   Data        1808  app.o(.rodata.gImage_money)
+    gImage_power                             0x080081f8   Data        1808  app.o(.rodata.gImage_power)
+    gImage_time                              0x08008908   Data        1748  app.o(.rodata.gImage_time)
+    Region$$Table$$Base                      0x0800951c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0800953c   Number         0  anon$$obj.o(Region$$Table)
     __stdout                                 0x20000000   Data           4  stdout.o(.data)
     Default_Key                              0x20000004   Data           6  iccard.o(.data.Default_Key)
-    car_power                                0x2000000a   Data           2  app.o(.data.car_power)
-    card_money                               0x2000000c   Data           2  mfrc522.o(.data.card_money)
-    charge_stepvalue                         0x2000000e   Data           3  app.o(.data.charge_stepvalue)
+    car_power                                0x2000000c   Data           2  app.o(.data.car_power)
+    card_money                               0x2000000e   Data           2  mfrc522.o(.data.card_money)
+    charge_stepvalue                         0x20000010   Data           3  app.o(.data.charge_stepvalue)
     charger_way                              0x20000014   Data          36  app.o(.data.charger_way)
     choose_no                                0x20000038   Data           1  app.o(.data.choose_no)
     hz                                       0x20000039   Data        1376  zi.o(.data.hz)
@@ -4398,14 +4412,14 @@ Image Symbol Table
     dht11time                                0x200013dc   Data           4  delay.o(.bss.dht11time)
     init_status                              0x200013e0   Data           2  delay.o(.bss.init_status)
     inittime                                 0x200013e4   Data           4  delay.o(.bss.inittime)
-    keytime                                  0x200013e8   Data           4  delay.o(.bss.keytime)
-    lcddev                                   0x200013ec   Data          10  lcd.o(.bss.lcddev)
-    led1_status                              0x200013f6   Data           1  led.o(.bss.led1_status)
-    ledtime                                  0x200013f8   Data           4  delay.o(.bss.ledtime)
-    runtime                                  0x200013fc   Data           4  delay.o(.bss.runtime)
-    total_money                              0x20001400   Data           4  app.o(.bss.total_money)
-    wifi_data                                0x20001404   Data        2004  esp8266.o(.bss.wifi_data)
-    __initial_sp                             0x20005bd8   Data           0  startup_stm32f10x_hd.o(STACK)
+    keytime                                  0x200013ec   Data           4  delay.o(.bss.keytime)
+    lcddev                                   0x200013f0   Data          10  lcd.o(.bss.lcddev)
+    led1_status                              0x200013fa   Data           1  led.o(.bss.led1_status)
+    ledtime                                  0x200013fc   Data           4  delay.o(.bss.ledtime)
+    runtime                                  0x20001404   Data           4  delay.o(.bss.runtime)
+    total_money                              0x20001408   Data           4  app.o(.bss.total_money)
+    wifi_data                                0x2000140c   Data        2004  esp8266.o(.bss.wifi_data)
+    __initial_sp                             0x20005be0   Data           0  startup_stm32f10x_hd.o(STACK)
 
 
 
@@ -4415,50 +4429,50 @@ Memory Map of the image
 
   Image Entry point : 0x08000131
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00009fd8, Max: 0x00080000, ABSOLUTE, COMPRESSED[0x00009be0])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000a170, Max: 0x00080000, ABSOLUTE, COMPRESSED[0x00009d78])
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000093a4, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000953c, Max: 0x00080000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x08000000   0x00000130   Data   RO            3    RESET               startup_stm32f10x_hd.o
-    0x08000130   0x08000130   0x00000000   Code   RO         2134  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x08000130   0x08000130   0x00000004   Code   RO         2264    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x08000134   0x08000134   0x00000004   Code   RO         2267    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x08000138   0x08000138   0x00000000   Code   RO         2269    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x08000138   0x08000138   0x00000000   Code   RO         2271    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x08000138   0x08000138   0x00000008   Code   RO         2272    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x08000140   0x08000140   0x00000000   Code   RO         2274    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x08000140   0x08000140   0x00000000   Code   RO         2276    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x08000140   0x08000140   0x00000004   Code   RO         2265    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x08000130   0x08000130   0x00000000   Code   RO         2139  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x08000130   0x08000130   0x00000004   Code   RO         2269    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x08000134   0x08000134   0x00000004   Code   RO         2272    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x08000138   0x08000138   0x00000000   Code   RO         2274    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x08000138   0x08000138   0x00000000   Code   RO         2276    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x08000138   0x08000138   0x00000008   Code   RO         2277    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x08000140   0x08000140   0x00000000   Code   RO         2279    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x08000140   0x08000140   0x00000000   Code   RO         2281    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x08000140   0x08000140   0x00000004   Code   RO         2270    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
     0x08000144   0x08000144   0x00000024   Code   RO            4    .text               startup_stm32f10x_hd.o
-    0x08000168   0x08000168   0x00000024   Code   RO         2139    .text               mc_w.l(memcpya.o)
-    0x0800018c   0x0800018c   0x00000024   Code   RO         2141    .text               mc_w.l(memseta.o)
-    0x080001b0   0x080001b0   0x00000024   Code   RO         2143    .text               mc_w.l(strstr.o)
-    0x080001d4   0x080001d4   0x0000000e   Code   RO         2145    .text               mc_w.l(strlen.o)
-    0x080001e2   0x080001e2   0x0000014e   Code   RO         2217    .text               mf_w.l(dadd.o)
-    0x08000330   0x08000330   0x000000e4   Code   RO         2219    .text               mf_w.l(dmul.o)
-    0x08000414   0x08000414   0x000000de   Code   RO         2221    .text               mf_w.l(ddiv.o)
-    0x080004f2   0x080004f2   0x0000002c   Code   RO         2288    .text               mc_w.l(uidiv.o)
-    0x0800051e   0x0800051e   0x00000062   Code   RO         2290    .text               mc_w.l(uldiv.o)
-    0x08000580   0x08000580   0x0000001e   Code   RO         2292    .text               mc_w.l(llshl.o)
-    0x0800059e   0x0800059e   0x00000020   Code   RO         2294    .text               mc_w.l(llushr.o)
-    0x080005be   0x080005be   0x00000024   Code   RO         2296    .text               mc_w.l(llsshr.o)
-    0x080005e2   0x080005e2   0x00000000   Code   RO         2323    .text               mc_w.l(iusefp.o)
-    0x080005e2   0x080005e2   0x000000ba   Code   RO         2326    .text               mf_w.l(depilogue.o)
-    0x0800069c   0x0800069c   0x00000030   Code   RO         2328    .text               mf_w.l(dfixul.o)
-    0x080006cc   0x080006cc   0x00000030   Code   RO         2330    .text               mf_w.l(cdrcmple.o)
-    0x080006fc   0x080006fc   0x00000024   Code   RO         2336    .text               mc_w.l(init.o)
-    0x08000720   0x08000720   0x0000005e   Code   RO         2361    .text               mc_w.l(__dclz77c.o)
+    0x08000168   0x08000168   0x00000024   Code   RO         2144    .text               mc_w.l(memcpya.o)
+    0x0800018c   0x0800018c   0x00000024   Code   RO         2146    .text               mc_w.l(memseta.o)
+    0x080001b0   0x080001b0   0x00000024   Code   RO         2148    .text               mc_w.l(strstr.o)
+    0x080001d4   0x080001d4   0x0000000e   Code   RO         2150    .text               mc_w.l(strlen.o)
+    0x080001e2   0x080001e2   0x0000014e   Code   RO         2222    .text               mf_w.l(dadd.o)
+    0x08000330   0x08000330   0x000000e4   Code   RO         2224    .text               mf_w.l(dmul.o)
+    0x08000414   0x08000414   0x000000de   Code   RO         2226    .text               mf_w.l(ddiv.o)
+    0x080004f2   0x080004f2   0x0000002c   Code   RO         2293    .text               mc_w.l(uidiv.o)
+    0x0800051e   0x0800051e   0x00000062   Code   RO         2295    .text               mc_w.l(uldiv.o)
+    0x08000580   0x08000580   0x0000001e   Code   RO         2297    .text               mc_w.l(llshl.o)
+    0x0800059e   0x0800059e   0x00000020   Code   RO         2299    .text               mc_w.l(llushr.o)
+    0x080005be   0x080005be   0x00000024   Code   RO         2301    .text               mc_w.l(llsshr.o)
+    0x080005e2   0x080005e2   0x00000000   Code   RO         2328    .text               mc_w.l(iusefp.o)
+    0x080005e2   0x080005e2   0x000000ba   Code   RO         2331    .text               mf_w.l(depilogue.o)
+    0x0800069c   0x0800069c   0x00000030   Code   RO         2333    .text               mf_w.l(dfixul.o)
+    0x080006cc   0x080006cc   0x00000030   Code   RO         2335    .text               mf_w.l(cdrcmple.o)
+    0x080006fc   0x080006fc   0x00000024   Code   RO         2341    .text               mc_w.l(init.o)
+    0x08000720   0x08000720   0x0000005e   Code   RO         2366    .text               mc_w.l(__dclz77c.o)
     0x0800077e   0x0800077e   0x00000002   PAD
     0x08000780   0x08000780   0x0000002c   Code   RO           34    .text.ADC_Cmd       stm32f10x_adc.o
-    0x080007ac   0x080007ac   0x000000b8   Code   RO         1284    .text.ADC_Config    adc.o
+    0x080007ac   0x080007ac   0x000000b8   Code   RO         1289    .text.ADC_Config    adc.o
     0x08000864   0x08000864   0x0000000e   Code   RO           60    .text.ADC_GetConversionValue  stm32f10x_adc.o
     0x08000872   0x08000872   0x00000002   PAD
     0x08000874   0x08000874   0x00000034   Code   RO           92    .text.ADC_GetFlagStatus  stm32f10x_adc.o
     0x080008a8   0x080008a8   0x0000002e   Code   RO           42    .text.ADC_GetResetCalibrationStatus  stm32f10x_adc.o
     0x080008d6   0x080008d6   0x00000002   PAD
-    0x080008d8   0x080008d8   0x00000040   Code   RO         1286    .text.ADC_GetValue  adc.o
+    0x080008d8   0x080008d8   0x00000040   Code   RO         1291    .text.ADC_GetValue  adc.o
     0x08000918   0x08000918   0x0000009a   Code   RO           30    .text.ADC_Init      stm32f10x_adc.o
     0x080009b2   0x080009b2   0x00000002   PAD
     0x080009b4   0x080009b4   0x0000017c   Code   RO           56    .text.ADC_RegularChannelConfig  stm32f10x_adc.o
@@ -4467,30 +4481,30 @@ Memory Map of the image
     0x08000b44   0x08000b44   0x0000002c   Code   RO           48    .text.ADC_SoftwareStartConvCmd  stm32f10x_adc.o
     0x08000b70   0x08000b70   0x00000012   Code   RO           44    .text.ADC_StartCalibration  stm32f10x_adc.o
     0x08000b82   0x08000b82   0x00000002   PAD
-    0x08000b84   0x08000b84   0x0000002a   Code   RO         1690    .text.ASCII_NUM     zi.o
+    0x08000b84   0x08000b84   0x0000002a   Code   RO         1695    .text.ASCII_NUM     zi.o
     0x08000bae   0x08000bae   0x00000002   PAD
-    0x08000bb0   0x08000bb0   0x00000064   Code   RO         1580    .text.AliIOT_ConnetServer  aliyun.o
-    0x08000c14   0x08000c14   0x0000015a   Code   RO         1578    .text.AliIOT_DataConfig  aliyun.o
+    0x08000bb0   0x08000bb0   0x00000064   Code   RO         1585    .text.AliIOT_ConnetServer  aliyun.o
+    0x08000c14   0x08000c14   0x0000015a   Code   RO         1583    .text.AliIOT_DataConfig  aliyun.o
     0x08000d6e   0x08000d6e   0x00000002   PAD
-    0x08000d70   0x08000d70   0x00000048   Code   RO         1837    .text.All_VlaueReset  app.o
+    0x08000d70   0x08000d70   0x00000048   Code   RO         1842    .text.All_VlaueReset  app.o
     0x08000db8   0x08000db8   0x00000034   Code   RO         1216    .text.Beep_Config   beep.o
     0x08000dec   0x08000dec   0x00000004   Code   RO         1141    .text.BusFault_Handler  stm32f10x_it.o
-    0x08000df0   0x08000df0   0x0000008e   Code   RO         1705    .text.Card_GetNumber  iccard.o
+    0x08000df0   0x08000df0   0x0000008e   Code   RO         1710    .text.Card_GetNumber  iccard.o
     0x08000e7e   0x08000e7e   0x00000002   PAD
-    0x08000e80   0x08000e80   0x000000a8   Code   RO         1715    .text.Card_PurseInit  iccard.o
-    0x08000f28   0x08000f28   0x0000005a   Code   RO         1727    .text.Card_PurseInit_Int  iccard.o
+    0x08000e80   0x08000e80   0x000000a8   Code   RO         1720    .text.Card_PurseInit  iccard.o
+    0x08000f28   0x08000f28   0x0000005a   Code   RO         1732    .text.Card_PurseInit_Int  iccard.o
     0x08000f82   0x08000f82   0x00000002   PAD
-    0x08000f84   0x08000f84   0x0000003a   Code   RO         1707    .text.Card_VerifyKeyA  iccard.o
+    0x08000f84   0x08000f84   0x0000003a   Code   RO         1712    .text.Card_VerifyKeyA  iccard.o
     0x08000fbe   0x08000fbe   0x00000002   PAD
-    0x08000fc0   0x08000fc0   0x0000014c   Code   RO         1829    .text.Charge_Choose_Num  app.o
-    0x0800110c   0x0800110c   0x000000c8   Code   RO         1827    .text.Charge_Choose_View  app.o
-    0x080011d4   0x080011d4   0x0000019e   Code   RO         1825    .text.Charge_View   app.o
+    0x08000fc0   0x08000fc0   0x0000014c   Code   RO         1834    .text.Charge_Choose_Num  app.o
+    0x0800110c   0x0800110c   0x000000c8   Code   RO         1832    .text.Charge_Choose_View  app.o
+    0x080011d4   0x080011d4   0x0000019e   Code   RO         1830    .text.Charge_View   app.o
     0x08001372   0x08001372   0x00000002   PAD
-    0x08001374   0x08001374   0x00000044   Code   RO         1271    .text.DHT11_Config  dht11.o
-    0x080013b8   0x080013b8   0x00000170   Code   RO         1273    .text.DHT11_ReadData  dht11.o
+    0x08001374   0x08001374   0x00000044   Code   RO         1276    .text.DHT11_Config  dht11.o
+    0x080013b8   0x080013b8   0x00000170   Code   RO         1278    .text.DHT11_ReadData  dht11.o
     0x08001528   0x08001528   0x00000002   Code   RO         1147    .text.DebugMon_Handler  stm32f10x_it.o
     0x0800152a   0x0800152a   0x00000002   PAD
-    0x0800152c   0x0800152c   0x00000036   Code   RO         1637    .text.Delay         lcd.o
+    0x0800152c   0x0800152c   0x00000036   Code   RO         1642    .text.Delay         lcd.o
     0x08001562   0x08001562   0x00000002   PAD
     0x08001564   0x08001564   0x0000001a   Code   RO         1171    .text.Delay_Config  delay.o
     0x0800157e   0x0800157e   0x00000002   PAD
@@ -4498,20 +4512,20 @@ Memory Map of the image
     0x080015ae   0x080015ae   0x00000002   PAD
     0x080015b0   0x080015b0   0x00000020   Code   RO         1181    .text.Delay_msnop   delay.o
     0x080015d0   0x080015d0   0x000000a8   Code   RO         1179    .text.Delay_usnop   delay.o
-    0x08001678   0x08001678   0x0000016c   Code   RO         1659    .text.Draw_Text_8_16_Str  lcd.o
-    0x080017e4   0x080017e4   0x000000ea   Code   RO         1542    .text.ESP8266_Config  esp8266.o
+    0x08001678   0x08001678   0x0000016c   Code   RO         1664    .text.Draw_Text_8_16_Str  lcd.o
+    0x080017e4   0x080017e4   0x000000ea   Code   RO         1547    .text.ESP8266_Config  esp8266.o
     0x080018ce   0x080018ce   0x00000002   PAD
-    0x080018d0   0x080018d0   0x0000006a   Code   RO         1554    .text.ESP8266_SendCmd  esp8266.o
+    0x080018d0   0x080018d0   0x0000006a   Code   RO         1559    .text.ESP8266_SendCmd  esp8266.o
     0x0800193a   0x0800193a   0x00000002   PAD
     0x0800193c   0x0800193c   0x00000042   Code   RO          426    .text.FSMC_NORSRAMCmd  stm32f10x_fsmc.o
     0x0800197e   0x0800197e   0x00000002   PAD
     0x08001980   0x08001980   0x000000fa   Code   RO          414    .text.FSMC_NORSRAMInit  stm32f10x_fsmc.o
     0x08001a7a   0x08001a7a   0x00000002   PAD
-    0x08001a7c   0x08001a7c   0x0000004c   Code   RO         1552    .text.FindStr       esp8266.o
-    0x08001ac8   0x08001ac8   0x000000a0   Code   RO         1831    .text.Func_Add      app.o
-    0x08001b68   0x08001b68   0x000000b0   Code   RO         1835    .text.Func_Charging  app.o
-    0x08001c18   0x08001c18   0x0000009c   Code   RO         1833    .text.Func_Sub      app.o
-    0x08001cb4   0x08001cb4   0x0000002a   Code   RO         1692    .text.GB16_NUM      zi.o
+    0x08001a7c   0x08001a7c   0x0000004c   Code   RO         1557    .text.FindStr       esp8266.o
+    0x08001ac8   0x08001ac8   0x000000a0   Code   RO         1836    .text.Func_Add      app.o
+    0x08001b68   0x08001b68   0x000000b0   Code   RO         1840    .text.Func_Charging  app.o
+    0x08001c18   0x08001c18   0x0000009c   Code   RO         1838    .text.Func_Sub      app.o
+    0x08001cb4   0x08001cb4   0x0000002a   Code   RO         1697    .text.GB16_NUM      zi.o
     0x08001cde   0x08001cde   0x00000002   PAD
     0x08001ce0   0x08001ce0   0x00000186   Code   RO          457    .text.GPIO_Init     stm32f10x_gpio.o
     0x08001e66   0x08001e66   0x00000002   PAD
@@ -4524,245 +4538,251 @@ Memory Map of the image
     0x08001ff4   0x08001ff4   0x0000002c   Code   RO          473    .text.GPIO_WriteBit  stm32f10x_gpio.o
     0x08002020   0x08002020   0x00000004   Code   RO         1137    .text.HardFault_Handler  stm32f10x_it.o
     0x08002024   0x08002024   0x00000020   Code   RO         1160    .text.JTAG_SWD_Config  main.o
-    0x08002044   0x08002044   0x0000003c   Code   RO         1240    .text.Key_Config    key.o
-    0x08002080   0x08002080   0x00000142   Code   RO         1242    .text.Key_GetValue  key.o
-    0x080021c2   0x080021c2   0x00000002   PAD
-    0x080021c4   0x080021c4   0x00000058   Code   RO         1645    .text.LCD_Clear     lcd.o
-    0x0800221c   0x0800221c   0x00000012   Code   RO         1641    .text.LCD_DisplayOn  lcd.o
-    0x0800222e   0x0800222e   0x00000002   PAD
-    0x08002230   0x08002230   0x000000c4   Code   RO         1643    .text.LCD_Display_Dir  lcd.o
-    0x080022f4   0x080022f4   0x00000032   Code   RO         1651    .text.LCD_DrawPoint  lcd.o
-    0x08002326   0x08002326   0x00000002   PAD
-    0x08002328   0x08002328   0x00000078   Code   RO         1633    .text.LCD_FSMC_Config  lcd.o
-    0x080023a0   0x080023a0   0x0000009e   Code   RO         1665    .text.LCD_Fill      lcd.o
-    0x0800243e   0x0800243e   0x00000002   PAD
-    0x08002440   0x08002440   0x000000be   Code   RO         1631    .text.LCD_GPIO_Config  lcd.o
-    0x080024fe   0x080024fe   0x00000002   PAD
-    0x08002500   0x08002500   0x00000022   Code   RO         1639    .text.LCD_Init      lcd.o
-    0x08002522   0x08002522   0x00000002   PAD
-    0x08002524   0x08002524   0x0000000c   Code   RO         1621    .text.LCD_RD_DATA   lcd.o
-    0x08002530   0x08002530   0x0000001e   Code   RO         1625    .text.LCD_ReadReg   lcd.o
-    0x0800254e   0x0800254e   0x00000002   PAD
-    0x08002550   0x08002550   0x0000025e   Code   RO         1649    .text.LCD_Scan_Dir  lcd.o
-    0x080027ae   0x080027ae   0x00000002   PAD
-    0x080027b0   0x080027b0   0x00000076   Code   RO         1647    .text.LCD_SetCursor  lcd.o
-    0x08002826   0x08002826   0x00000002   PAD
-    0x08002828   0x08002828   0x00000088   Code   RO         1661    .text.LCD_Show_Photo  lcd.o
-    0x080028b0   0x080028b0   0x00000018   Code   RO         1619    .text.LCD_WR_DATA   lcd.o
-    0x080028c8   0x080028c8   0x00000018   Code   RO         1617    .text.LCD_WR_REG    lcd.o
-    0x080028e0   0x080028e0   0x00000016   Code   RO         1627    .text.LCD_WriteRAM_Prepare  lcd.o
-    0x080028f6   0x080028f6   0x00000002   PAD
-    0x080028f8   0x080028f8   0x0000002a   Code   RO         1623    .text.LCD_WriteReg  lcd.o
-    0x08002922   0x08002922   0x00000002   PAD
-    0x08002924   0x08002924   0x00000308   Code   RO         1635    .text.LCD_init_RGB  lcd.o
-    0x08002c2c   0x08002c2c   0x0000005e   Code   RO         1200    .text.LED_Config    led.o
-    0x08002c8a   0x08002c8a   0x00000002   PAD
-    0x08002c8c   0x08002c8c   0x000000c0   Code   RO         1796    .text.MFRC522_Add_IC  mfrc522.o
-    0x08002d4c   0x08002d4c   0x000000be   Code   RO         1798    .text.MFRC522_Add_IC1  mfrc522.o
-    0x08002e0a   0x08002e0a   0x00000002   PAD
-    0x08002e0c   0x08002e0c   0x000000b2   Code   RO         1766    .text.MFRC_CalulateCRC  mfrc522.o
-    0x08002ebe   0x08002ebe   0x00000002   PAD
-    0x08002ec0   0x08002ec0   0x0000002e   Code   RO         1764    .text.MFRC_ClrBitMask  mfrc522.o
-    0x08002eee   0x08002eee   0x00000002   PAD
-    0x08002ef0   0x08002ef0   0x00000210   Code   RO         1768    .text.MFRC_CmdFrame  mfrc522.o
-    0x08003100   0x08003100   0x00000008   Code   RO         1754    .text.MFRC_Init     mfrc522.o
-    0x08003108   0x08003108   0x00000042   Code   RO         1760    .text.MFRC_ReadReg  mfrc522.o
-    0x0800314a   0x0800314a   0x00000002   PAD
-    0x0800314c   0x0800314c   0x0000002e   Code   RO         1762    .text.MFRC_SetBitMask  mfrc522.o
-    0x0800317a   0x0800317a   0x00000002   PAD
-    0x0800317c   0x0800317c   0x00000042   Code   RO         1758    .text.MFRC_WriteReg  mfrc522.o
-    0x080031be   0x080031be   0x00000002   PAD
-    0x080031c0   0x080031c0   0x0000005e   Code   RO         1937    .text.MQTTPacket_encode  mqttpacket.o
-    0x0800321e   0x0800321e   0x00000002   PAD
-    0x08003220   0x08003220   0x00000056   Code   RO         1941    .text.MQTTPacket_len  mqttpacket.o
-    0x08003276   0x08003276   0x00000002   PAD
-    0x08003278   0x08003278   0x000001f0   Code   RO         1866    .text.MQTTSerialize_connect  mqttconnectclient.o
-    0x08003468   0x08003468   0x000000c4   Code   RO         1864    .text.MQTTSerialize_connectLength  mqttconnectclient.o
-    0x0800352c   0x0800352c   0x0000011c   Code   RO         1984    .text.MQTTSerialize_publish  mqttserializepublish.o
-    0x08003648   0x08003648   0x00000040   Code   RO         1982    .text.MQTTSerialize_publishLength  mqttserializepublish.o
-    0x08003688   0x08003688   0x0000002a   Code   RO         1963    .text.MQTTstrlen    mqttpacket.o
-    0x080036b2   0x080036b2   0x00000002   PAD
-    0x080036b4   0x080036b4   0x00000004   Code   RO         1139    .text.MemManage_Handler  stm32f10x_it.o
-    0x080036b8   0x080036b8   0x000000e8   Code   RO         1584    .text.MyMQTT_Connect  aliyun.o
-    0x080037a0   0x080037a0   0x000000be   Code   RO         1588    .text.MyMQTT_Publish  aliyun.o
-    0x0800385e   0x0800385e   0x00000002   PAD
-    0x08003860   0x08003860   0x00000002   Code   RO         1135    .text.NMI_Handler   stm32f10x_it.o
-    0x08003862   0x08003862   0x00000002   PAD
-    0x08003864   0x08003864   0x000000aa   Code   RO           13    .text.NVIC_Init     misc.o
-    0x0800390e   0x0800390e   0x00000002   PAD
-    0x08003910   0x08003910   0x0000000c   Code   RO         1772    .text.PCD_AntennaOff  mfrc522.o
-    0x0800391c   0x0800391c   0x00000026   Code   RO         1774    .text.PCD_AntennaOn  mfrc522.o
-    0x08003942   0x08003942   0x00000002   PAD
-    0x08003944   0x08003944   0x000000ba   Code   RO         1780    .text.PCD_Anticoll  mfrc522.o
-    0x080039fe   0x080039fe   0x00000002   PAD
-    0x08003a00   0x08003a00   0x000000be   Code   RO         1784    .text.PCD_AuthState  mfrc522.o
-    0x08003abe   0x08003abe   0x00000002   PAD
-    0x08003ac0   0x08003ac0   0x0000000c   Code   RO         1776    .text.PCD_Init      mfrc522.o
-    0x08003acc   0x08003acc   0x0000006e   Code   RO         1778    .text.PCD_Request   mfrc522.o
-    0x08003b3a   0x08003b3a   0x00000002   PAD
-    0x08003b3c   0x08003b3c   0x00000086   Code   RO         1770    .text.PCD_Reset     mfrc522.o
-    0x08003bc2   0x08003bc2   0x00000002   PAD
-    0x08003bc4   0x08003bc4   0x000000ae   Code   RO         1782    .text.PCD_Select    mfrc522.o
-    0x08003c72   0x08003c72   0x00000002   PAD
-    0x08003c74   0x08003c74   0x000000f4   Code   RO         1786    .text.PCD_WriteBlock  mfrc522.o
-    0x08003d68   0x08003d68   0x00000002   Code   RO         1149    .text.PendSV_Handler  stm32f10x_it.o
-    0x08003d6a   0x08003d6a   0x00000002   PAD
-    0x08003d6c   0x08003d6c   0x0000002c   Code   RO          643    .text.RCC_ADCCLKConfig  stm32f10x_rcc.o
-    0x08003d98   0x08003d98   0x00000038   Code   RO          655    .text.RCC_AHBPeriphClockCmd  stm32f10x_rcc.o
-    0x08003dd0   0x08003dd0   0x00000038   Code   RO          659    .text.RCC_APB1PeriphClockCmd  stm32f10x_rcc.o
-    0x08003e08   0x08003e08   0x00000038   Code   RO          657    .text.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
-    0x08003e40   0x08003e40   0x00000172   Code   RO          653    .text.RCC_GetClocksFreq  stm32f10x_rcc.o
-    0x08003fb2   0x08003fb2   0x00000002   PAD
-    0x08003fb4   0x08003fb4   0x0000004c   Code   RO         1225    .text.RGB_Config    rgb.o
-    0x08004000   0x08004000   0x000000d8   Code   RO         1227    .text.RGB_ls        rgb.o
-    0x080040d8   0x080040d8   0x000000c4   Code   RO         1810    .text.SPI_RC522_Init  spi.o
-    0x0800419c   0x0800419c   0x00000002   Code   RO         1145    .text.SVC_Handler   stm32f10x_it.o
-    0x0800419e   0x0800419e   0x00000002   PAD
-    0x080041a0   0x080041a0   0x00000008   Code   RO         1120    .text.SetSysClock   system_stm32f10x.o
-    0x080041a8   0x080041a8   0x00000122   Code   RO         1124    .text.SetSysClockTo72  system_stm32f10x.o
-    0x080042ca   0x080042ca   0x00000002   PAD
-    0x080042cc   0x080042cc   0x0000007e   Code   RO         1814    .text.Soft_SPI_Read  spi.o
-    0x0800434a   0x0800434a   0x00000002   PAD
-    0x0800434c   0x0800434c   0x00000092   Code   RO         1812    .text.Soft_SPI_Write  spi.o
-    0x080043de   0x080043de   0x00000002   PAD
-    0x080043e0   0x080043e0   0x00000052   Code   RO         1173    .text.SysTick_Config  delay.o
-    0x08004432   0x08004432   0x00000002   PAD
-    0x08004434   0x08004434   0x000001c4   Code   RO         1175    .text.SysTick_Handler  delay.o
-    0x080045f8   0x080045f8   0x00000066   Code   RO         1118    .text.SystemInit    system_stm32f10x.o
-    0x0800465e   0x0800465e   0x00000002   PAD
-    0x08004660   0x08004660   0x0000008e   Code   RO         1252    .text.USART1_Config  usart1.o
-    0x080046ee   0x080046ee   0x00000002   PAD
-    0x080046f0   0x080046f0   0x0000009a   Code   RO         1258    .text.USART1_IRQHandler  usart1.o
-    0x0800478a   0x0800478a   0x00000002   PAD
-    0x0800478c   0x0800478c   0x00000110   Code   RO         1544    .text.USART3_IRQHandler  esp8266.o
-    0x0800489c   0x0800489c   0x00000044   Code   RO         1086    .text.USART_ClearITPendingBit  stm32f10x_usart.o
-    0x080048e0   0x080048e0   0x0000002c   Code   RO         1040    .text.USART_Cmd     stm32f10x_usart.o
-    0x0800490c   0x0800490c   0x00000044   Code   RO         1080    .text.USART_GetFlagStatus  stm32f10x_usart.o
-    0x08004950   0x08004950   0x000000b0   Code   RO         1084    .text.USART_GetITStatus  stm32f10x_usart.o
-    0x08004a00   0x08004a00   0x00000092   Code   RO         1042    .text.USART_ITConfig  stm32f10x_usart.o
-    0x08004a92   0x08004a92   0x00000002   PAD
-    0x08004a94   0x08004a94   0x0000015c   Code   RO         1032    .text.USART_Init    stm32f10x_usart.o
-    0x08004bf0   0x08004bf0   0x00000010   Code   RO         1058    .text.USART_ReceiveData  stm32f10x_usart.o
-    0x08004c00   0x08004c00   0x00000018   Code   RO         1056    .text.USART_SendData  stm32f10x_usart.o
-    0x08004c18   0x08004c18   0x00000078   Code   RO         1602    .text.Up_Data       aliyun.o
-    0x08004c90   0x08004c90   0x00000004   Code   RO         1143    .text.UsageFault_Handler  stm32f10x_it.o
-    0x08004c94   0x08004c94   0x00000032   Code   RO         1548    .text.Usart3_SendByte  esp8266.o
-    0x08004cc6   0x08004cc6   0x00000002   PAD
-    0x08004cc8   0x08004cc8   0x00000042   Code   RO         1550    .text.Usart3_SendStr  esp8266.o
-    0x08004d0a   0x08004d0a   0x00000002   PAD
-    0x08004d0c   0x08004d0c   0x00000026   Code   RO         1562    .text.WIFI_ClearDat  esp8266.o
-    0x08004d32   0x08004d32   0x00000002   PAD
-    0x08004d34   0x08004d34   0x0000002c   Code   RO         1558    .text.WIFI_CloseTransmission  esp8266.o
-    0x08004d60   0x08004d60   0x000000da   Code   RO         1560    .text.WIFI_ConnectServer  esp8266.o
-    0x08004e3a   0x08004e3a   0x00000002   PAD
-    0x08004e3c   0x08004e3c   0x0000004a   Code   RO         1564    .text.WIFI_SendBuff  esp8266.o
-    0x08004e86   0x08004e86   0x00000002   PAD
-    0x08004e88   0x08004e88   0x00000082   Code   RO         1556    .text.Wifi_Init     esp8266.o
-    0x08004f0a   0x08004f0a   0x00000002   PAD
-    0x08004f0c   0x08004f0c   0x00000030   Code   RO         1256    .text.__NVIC_EnableIRQ  usart1.o
-    0x08004f3c   0x08004f3c   0x00000042   Code   RO         1183    .text.__NVIC_SetPriority  delay.o
-    0x08004f7e   0x08004f7e   0x00000002   PAD
-    0x08004f80   0x08004f80   0x00000042   Code   RO         1254    .text.__NVIC_SetPriority  usart1.o
-    0x08004fc2   0x08004fc2   0x00000002   PAD
-    0x08004fc4   0x08004fc4   0x00000034   Code   RO         1260    .text.fputc         usart1.o
-    0x08004ff8   0x08004ff8   0x00000450   Code   RO         1158    .text.main          main.o
-    0x08005448   0x08005448   0x000000d8   Code   RO         1657    .text.show_xXx      lcd.o
-    0x08005520   0x08005520   0x00000038   Code   RO         2087    .text.utils_hb2hex  utils_md5.o
-    0x08005558   0x08005558   0x00000126   Code   RO         2056    .text.utils_hmac_sha1  utils_hmac.o
-    0x0800567e   0x0800567e   0x00000002   PAD
-    0x08005680   0x08005680   0x0000014c   Code   RO         2111    .text.utils_sha1_finish  utils_sha1.o
-    0x080057cc   0x080057cc   0x00000012   Code   RO         2097    .text.utils_sha1_init  utils_sha1.o
-    0x080057de   0x080057de   0x00000002   PAD
-    0x080057e0   0x080057e0   0x000015de   Code   RO         2107    .text.utils_sha1_process  utils_sha1.o
-    0x08006dbe   0x08006dbe   0x00000002   PAD
-    0x08006dc0   0x08006dc0   0x0000004e   Code   RO         2105    .text.utils_sha1_starts  utils_sha1.o
-    0x08006e0e   0x08006e0e   0x00000002   PAD
-    0x08006e10   0x08006e10   0x000000c0   Code   RO         2109    .text.utils_sha1_update  utils_sha1.o
-    0x08006ed0   0x08006ed0   0x00000032   Code   RO         1955    .text.writeCString  mqttpacket.o
-    0x08006f02   0x08006f02   0x00000002   PAD
-    0x08006f04   0x08006f04   0x0000001e   Code   RO         1951    .text.writeChar     mqttpacket.o
-    0x08006f22   0x08006f22   0x00000002   PAD
-    0x08006f24   0x08006f24   0x00000032   Code   RO         1953    .text.writeInt      mqttpacket.o
+    0x08002044   0x08002044   0x0000016c   Code   RO         1242    .text.KEY_Scan      key.o
+    0x080021b0   0x080021b0   0x0000003c   Code   RO         1240    .text.Key_Config    key.o
+    0x080021ec   0x080021ec   0x0000016a   Code   RO         1244    .text.Key_GetValue  key.o
+    0x08002356   0x08002356   0x00000002   PAD
+    0x08002358   0x08002358   0x00000058   Code   RO         1650    .text.LCD_Clear     lcd.o
+    0x080023b0   0x080023b0   0x00000012   Code   RO         1646    .text.LCD_DisplayOn  lcd.o
+    0x080023c2   0x080023c2   0x00000002   PAD
+    0x080023c4   0x080023c4   0x000000c4   Code   RO         1648    .text.LCD_Display_Dir  lcd.o
+    0x08002488   0x08002488   0x00000032   Code   RO         1656    .text.LCD_DrawPoint  lcd.o
+    0x080024ba   0x080024ba   0x00000002   PAD
+    0x080024bc   0x080024bc   0x00000078   Code   RO         1638    .text.LCD_FSMC_Config  lcd.o
+    0x08002534   0x08002534   0x0000009e   Code   RO         1670    .text.LCD_Fill      lcd.o
+    0x080025d2   0x080025d2   0x00000002   PAD
+    0x080025d4   0x080025d4   0x000000be   Code   RO         1636    .text.LCD_GPIO_Config  lcd.o
+    0x08002692   0x08002692   0x00000002   PAD
+    0x08002694   0x08002694   0x00000022   Code   RO         1644    .text.LCD_Init      lcd.o
+    0x080026b6   0x080026b6   0x00000002   PAD
+    0x080026b8   0x080026b8   0x0000000c   Code   RO         1626    .text.LCD_RD_DATA   lcd.o
+    0x080026c4   0x080026c4   0x0000001e   Code   RO         1630    .text.LCD_ReadReg   lcd.o
+    0x080026e2   0x080026e2   0x00000002   PAD
+    0x080026e4   0x080026e4   0x0000025e   Code   RO         1654    .text.LCD_Scan_Dir  lcd.o
+    0x08002942   0x08002942   0x00000002   PAD
+    0x08002944   0x08002944   0x00000076   Code   RO         1652    .text.LCD_SetCursor  lcd.o
+    0x080029ba   0x080029ba   0x00000002   PAD
+    0x080029bc   0x080029bc   0x00000088   Code   RO         1666    .text.LCD_Show_Photo  lcd.o
+    0x08002a44   0x08002a44   0x00000018   Code   RO         1624    .text.LCD_WR_DATA   lcd.o
+    0x08002a5c   0x08002a5c   0x00000018   Code   RO         1622    .text.LCD_WR_REG    lcd.o
+    0x08002a74   0x08002a74   0x00000016   Code   RO         1632    .text.LCD_WriteRAM_Prepare  lcd.o
+    0x08002a8a   0x08002a8a   0x00000002   PAD
+    0x08002a8c   0x08002a8c   0x0000002a   Code   RO         1628    .text.LCD_WriteReg  lcd.o
+    0x08002ab6   0x08002ab6   0x00000002   PAD
+    0x08002ab8   0x08002ab8   0x00000308   Code   RO         1640    .text.LCD_init_RGB  lcd.o
+    0x08002dc0   0x08002dc0   0x0000005e   Code   RO         1200    .text.LED_Config    led.o
+    0x08002e1e   0x08002e1e   0x00000002   PAD
+    0x08002e20   0x08002e20   0x000000c0   Code   RO         1801    .text.MFRC522_Add_IC  mfrc522.o
+    0x08002ee0   0x08002ee0   0x000000be   Code   RO         1803    .text.MFRC522_Add_IC1  mfrc522.o
+    0x08002f9e   0x08002f9e   0x00000002   PAD
+    0x08002fa0   0x08002fa0   0x000000b2   Code   RO         1771    .text.MFRC_CalulateCRC  mfrc522.o
+    0x08003052   0x08003052   0x00000002   PAD
+    0x08003054   0x08003054   0x0000002e   Code   RO         1769    .text.MFRC_ClrBitMask  mfrc522.o
+    0x08003082   0x08003082   0x00000002   PAD
+    0x08003084   0x08003084   0x00000210   Code   RO         1773    .text.MFRC_CmdFrame  mfrc522.o
+    0x08003294   0x08003294   0x00000008   Code   RO         1759    .text.MFRC_Init     mfrc522.o
+    0x0800329c   0x0800329c   0x00000042   Code   RO         1765    .text.MFRC_ReadReg  mfrc522.o
+    0x080032de   0x080032de   0x00000002   PAD
+    0x080032e0   0x080032e0   0x0000002e   Code   RO         1767    .text.MFRC_SetBitMask  mfrc522.o
+    0x0800330e   0x0800330e   0x00000002   PAD
+    0x08003310   0x08003310   0x00000042   Code   RO         1763    .text.MFRC_WriteReg  mfrc522.o
+    0x08003352   0x08003352   0x00000002   PAD
+    0x08003354   0x08003354   0x0000005e   Code   RO         1942    .text.MQTTPacket_encode  mqttpacket.o
+    0x080033b2   0x080033b2   0x00000002   PAD
+    0x080033b4   0x080033b4   0x00000056   Code   RO         1946    .text.MQTTPacket_len  mqttpacket.o
+    0x0800340a   0x0800340a   0x00000002   PAD
+    0x0800340c   0x0800340c   0x000001f0   Code   RO         1871    .text.MQTTSerialize_connect  mqttconnectclient.o
+    0x080035fc   0x080035fc   0x000000c4   Code   RO         1869    .text.MQTTSerialize_connectLength  mqttconnectclient.o
+    0x080036c0   0x080036c0   0x0000011c   Code   RO         1989    .text.MQTTSerialize_publish  mqttserializepublish.o
+    0x080037dc   0x080037dc   0x00000040   Code   RO         1987    .text.MQTTSerialize_publishLength  mqttserializepublish.o
+    0x0800381c   0x0800381c   0x0000002a   Code   RO         1968    .text.MQTTstrlen    mqttpacket.o
+    0x08003846   0x08003846   0x00000002   PAD
+    0x08003848   0x08003848   0x00000004   Code   RO         1139    .text.MemManage_Handler  stm32f10x_it.o
+    0x0800384c   0x0800384c   0x000000e8   Code   RO         1589    .text.MyMQTT_Connect  aliyun.o
+    0x08003934   0x08003934   0x000000be   Code   RO         1593    .text.MyMQTT_Publish  aliyun.o
+    0x080039f2   0x080039f2   0x00000002   PAD
+    0x080039f4   0x080039f4   0x00000002   Code   RO         1135    .text.NMI_Handler   stm32f10x_it.o
+    0x080039f6   0x080039f6   0x00000002   PAD
+    0x080039f8   0x080039f8   0x000000aa   Code   RO           13    .text.NVIC_Init     misc.o
+    0x08003aa2   0x08003aa2   0x00000002   PAD
+    0x08003aa4   0x08003aa4   0x0000000c   Code   RO         1777    .text.PCD_AntennaOff  mfrc522.o
+    0x08003ab0   0x08003ab0   0x00000026   Code   RO         1779    .text.PCD_AntennaOn  mfrc522.o
+    0x08003ad6   0x08003ad6   0x00000002   PAD
+    0x08003ad8   0x08003ad8   0x000000ba   Code   RO         1785    .text.PCD_Anticoll  mfrc522.o
+    0x08003b92   0x08003b92   0x00000002   PAD
+    0x08003b94   0x08003b94   0x000000be   Code   RO         1789    .text.PCD_AuthState  mfrc522.o
+    0x08003c52   0x08003c52   0x00000002   PAD
+    0x08003c54   0x08003c54   0x0000000c   Code   RO         1781    .text.PCD_Init      mfrc522.o
+    0x08003c60   0x08003c60   0x0000006e   Code   RO         1783    .text.PCD_Request   mfrc522.o
+    0x08003cce   0x08003cce   0x00000002   PAD
+    0x08003cd0   0x08003cd0   0x00000086   Code   RO         1775    .text.PCD_Reset     mfrc522.o
+    0x08003d56   0x08003d56   0x00000002   PAD
+    0x08003d58   0x08003d58   0x000000ae   Code   RO         1787    .text.PCD_Select    mfrc522.o
+    0x08003e06   0x08003e06   0x00000002   PAD
+    0x08003e08   0x08003e08   0x000000f4   Code   RO         1791    .text.PCD_WriteBlock  mfrc522.o
+    0x08003efc   0x08003efc   0x00000002   Code   RO         1149    .text.PendSV_Handler  stm32f10x_it.o
+    0x08003efe   0x08003efe   0x00000002   PAD
+    0x08003f00   0x08003f00   0x0000002c   Code   RO          643    .text.RCC_ADCCLKConfig  stm32f10x_rcc.o
+    0x08003f2c   0x08003f2c   0x00000038   Code   RO          655    .text.RCC_AHBPeriphClockCmd  stm32f10x_rcc.o
+    0x08003f64   0x08003f64   0x00000038   Code   RO          659    .text.RCC_APB1PeriphClockCmd  stm32f10x_rcc.o
+    0x08003f9c   0x08003f9c   0x00000038   Code   RO          657    .text.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
+    0x08003fd4   0x08003fd4   0x00000172   Code   RO          653    .text.RCC_GetClocksFreq  stm32f10x_rcc.o
+    0x08004146   0x08004146   0x00000002   PAD
+    0x08004148   0x08004148   0x0000004c   Code   RO         1225    .text.RGB_Config    rgb.o
+    0x08004194   0x08004194   0x000000d8   Code   RO         1227    .text.RGB_ls        rgb.o
+    0x0800426c   0x0800426c   0x000000c4   Code   RO         1815    .text.SPI_RC522_Init  spi.o
+    0x08004330   0x08004330   0x00000002   Code   RO         1145    .text.SVC_Handler   stm32f10x_it.o
+    0x08004332   0x08004332   0x00000002   PAD
+    0x08004334   0x08004334   0x00000008   Code   RO         1120    .text.SetSysClock   system_stm32f10x.o
+    0x0800433c   0x0800433c   0x00000122   Code   RO         1124    .text.SetSysClockTo72  system_stm32f10x.o
+    0x0800445e   0x0800445e   0x00000002   PAD
+    0x08004460   0x08004460   0x0000007e   Code   RO         1819    .text.Soft_SPI_Read  spi.o
+    0x080044de   0x080044de   0x00000002   PAD
+    0x080044e0   0x080044e0   0x00000092   Code   RO         1817    .text.Soft_SPI_Write  spi.o
+    0x08004572   0x08004572   0x00000002   PAD
+    0x08004574   0x08004574   0x00000052   Code   RO         1173    .text.SysTick_Config  delay.o
+    0x080045c6   0x080045c6   0x00000002   PAD
+    0x080045c8   0x080045c8   0x000001c4   Code   RO         1175    .text.SysTick_Handler  delay.o
+    0x0800478c   0x0800478c   0x00000066   Code   RO         1118    .text.SystemInit    system_stm32f10x.o
+    0x080047f2   0x080047f2   0x00000002   PAD
+    0x080047f4   0x080047f4   0x0000008e   Code   RO         1257    .text.USART1_Config  usart1.o
+    0x08004882   0x08004882   0x00000002   PAD
+    0x08004884   0x08004884   0x0000009a   Code   RO         1263    .text.USART1_IRQHandler  usart1.o
+    0x0800491e   0x0800491e   0x00000002   PAD
+    0x08004920   0x08004920   0x00000110   Code   RO         1549    .text.USART3_IRQHandler  esp8266.o
+    0x08004a30   0x08004a30   0x00000044   Code   RO         1086    .text.USART_ClearITPendingBit  stm32f10x_usart.o
+    0x08004a74   0x08004a74   0x0000002c   Code   RO         1040    .text.USART_Cmd     stm32f10x_usart.o
+    0x08004aa0   0x08004aa0   0x00000044   Code   RO         1080    .text.USART_GetFlagStatus  stm32f10x_usart.o
+    0x08004ae4   0x08004ae4   0x000000b0   Code   RO         1084    .text.USART_GetITStatus  stm32f10x_usart.o
+    0x08004b94   0x08004b94   0x00000092   Code   RO         1042    .text.USART_ITConfig  stm32f10x_usart.o
+    0x08004c26   0x08004c26   0x00000002   PAD
+    0x08004c28   0x08004c28   0x0000015c   Code   RO         1032    .text.USART_Init    stm32f10x_usart.o
+    0x08004d84   0x08004d84   0x00000010   Code   RO         1058    .text.USART_ReceiveData  stm32f10x_usart.o
+    0x08004d94   0x08004d94   0x00000018   Code   RO         1056    .text.USART_SendData  stm32f10x_usart.o
+    0x08004dac   0x08004dac   0x00000078   Code   RO         1607    .text.Up_Data       aliyun.o
+    0x08004e24   0x08004e24   0x00000004   Code   RO         1143    .text.UsageFault_Handler  stm32f10x_it.o
+    0x08004e28   0x08004e28   0x00000032   Code   RO         1553    .text.Usart3_SendByte  esp8266.o
+    0x08004e5a   0x08004e5a   0x00000002   PAD
+    0x08004e5c   0x08004e5c   0x00000042   Code   RO         1555    .text.Usart3_SendStr  esp8266.o
+    0x08004e9e   0x08004e9e   0x00000002   PAD
+    0x08004ea0   0x08004ea0   0x00000026   Code   RO         1567    .text.WIFI_ClearDat  esp8266.o
+    0x08004ec6   0x08004ec6   0x00000002   PAD
+    0x08004ec8   0x08004ec8   0x0000002c   Code   RO         1563    .text.WIFI_CloseTransmission  esp8266.o
+    0x08004ef4   0x08004ef4   0x000000da   Code   RO         1565    .text.WIFI_ConnectServer  esp8266.o
+    0x08004fce   0x08004fce   0x00000002   PAD
+    0x08004fd0   0x08004fd0   0x0000004a   Code   RO         1569    .text.WIFI_SendBuff  esp8266.o
+    0x0800501a   0x0800501a   0x00000002   PAD
+    0x0800501c   0x0800501c   0x00000082   Code   RO         1561    .text.Wifi_Init     esp8266.o
+    0x0800509e   0x0800509e   0x00000002   PAD
+    0x080050a0   0x080050a0   0x00000030   Code   RO         1261    .text.__NVIC_EnableIRQ  usart1.o
+    0x080050d0   0x080050d0   0x00000042   Code   RO         1183    .text.__NVIC_SetPriority  delay.o
+    0x08005112   0x08005112   0x00000002   PAD
+    0x08005114   0x08005114   0x00000042   Code   RO         1259    .text.__NVIC_SetPriority  usart1.o
+    0x08005156   0x08005156   0x00000002   PAD
+    0x08005158   0x08005158   0x00000034   Code   RO         1265    .text.fputc         usart1.o
+    0x0800518c   0x0800518c   0x00000454   Code   RO         1158    .text.main          main.o
+    0x080055e0   0x080055e0   0x000000d8   Code   RO         1662    .text.show_xXx      lcd.o
+    0x080056b8   0x080056b8   0x00000038   Code   RO         2092    .text.utils_hb2hex  utils_md5.o
+    0x080056f0   0x080056f0   0x00000126   Code   RO         2061    .text.utils_hmac_sha1  utils_hmac.o
+    0x08005816   0x08005816   0x00000002   PAD
+    0x08005818   0x08005818   0x0000014c   Code   RO         2116    .text.utils_sha1_finish  utils_sha1.o
+    0x08005964   0x08005964   0x00000012   Code   RO         2102    .text.utils_sha1_init  utils_sha1.o
+    0x08005976   0x08005976   0x00000002   PAD
+    0x08005978   0x08005978   0x000015de   Code   RO         2112    .text.utils_sha1_process  utils_sha1.o
     0x08006f56   0x08006f56   0x00000002   PAD
-    0x08006f58   0x08006f58   0x00000054   Code   RO         1959    .text.writeMQTTString  mqttpacket.o
-    0x08006fac   0x08006fac   0x00000020   Code   RO         2158    i.__0printf         mc_w.l(printfa.o)
-    0x08006fcc   0x08006fcc   0x00000028   Code   RO         2160    i.__0sprintf        mc_w.l(printfa.o)
-    0x08006ff4   0x08006ff4   0x0000000e   Code   RO         2355    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x08007002   0x08007002   0x00000002   Code   RO         2356    i.__scatterload_null  mc_w.l(handlers.o)
-    0x08007004   0x08007004   0x0000000e   Code   RO         2357    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x08007012   0x08007012   0x00000002   PAD
-    0x08007014   0x08007014   0x00000184   Code   RO         2165    i._fp_digits        mc_w.l(printfa.o)
-    0x08007198   0x08007198   0x000006dc   Code   RO         2166    i._printf_core      mc_w.l(printfa.o)
-    0x08007874   0x08007874   0x00000024   Code   RO         2167    i._printf_post_padding  mc_w.l(printfa.o)
-    0x08007898   0x08007898   0x0000002e   Code   RO         2168    i._printf_pre_padding  mc_w.l(printfa.o)
-    0x080078c6   0x080078c6   0x0000000a   Code   RO         2170    i._sputc            mc_w.l(printfa.o)
-    0x080078d0   0x080078d0   0x00000014   Data   RO         1289    .rodata..L__const.ADC_Config.adc  adc.o
-    0x080078e4   0x080078e4   0x00000058   Data   RO         1608    .rodata..L__const.MyMQTT_Connect.data  aliyun.o
-    0x0800793c   0x0800793c   0x00000004   Data   RO          678    .rodata.ADCPrescTable  stm32f10x_rcc.o
-    0x08007940   0x08007940   0x00000010   Data   RO          677    .rodata.APBAHBPrescTable  stm32f10x_rcc.o
-    0x08007950   0x08007950   0x00000710   Data   RO         1840    .rodata.gImage_money  app.o
-    0x08008060   0x08008060   0x00000710   Data   RO         1841    .rodata.gImage_power  app.o
-    0x08008770   0x08008770   0x000006d4   Data   RO         1839    .rodata.gImage_time  app.o
-    0x08008e44   0x08008e44   0x00000040   Data   RO         2115    .rodata.iot_sha1_padding  utils_sha1.o
-    0x08008e84   0x08008e84   0x00000056   Data   RO         1162    .rodata.str1.1      main.o
-    0x08008eda   0x08008eda   0x00000099   Data   RO         1192    .rodata.str1.1      delay.o
-    0x08008f73   0x08008f73   0x000000e4   Data   RO         1570    .rodata.str1.1      esp8266.o
-    0x08009057   0x08009057   0x00000273   Data   RO         1607    .rodata.str1.1      aliyun.o
-    0x080092ca   0x080092ca   0x0000005e   Data   RO         1802    .rodata.str1.1      mfrc522.o
-    0x08009328   0x08009328   0x0000004d   Data   RO         1845    .rodata.str1.1      app.o
-    0x08009375   0x08009375   0x0000000c   Data   RO         1877    .rodata.str1.1      mqttconnectclient.o
-    0x08009381   0x08009381   0x00000003   PAD
-    0x08009384   0x08009384   0x00000020   Data   RO         2354    Region$$Table       anon$$obj.o
+    0x08006f58   0x08006f58   0x0000004e   Code   RO         2110    .text.utils_sha1_starts  utils_sha1.o
+    0x08006fa6   0x08006fa6   0x00000002   PAD
+    0x08006fa8   0x08006fa8   0x000000c0   Code   RO         2114    .text.utils_sha1_update  utils_sha1.o
+    0x08007068   0x08007068   0x00000032   Code   RO         1960    .text.writeCString  mqttpacket.o
+    0x0800709a   0x0800709a   0x00000002   PAD
+    0x0800709c   0x0800709c   0x0000001e   Code   RO         1956    .text.writeChar     mqttpacket.o
+    0x080070ba   0x080070ba   0x00000002   PAD
+    0x080070bc   0x080070bc   0x00000032   Code   RO         1958    .text.writeInt      mqttpacket.o
+    0x080070ee   0x080070ee   0x00000002   PAD
+    0x080070f0   0x080070f0   0x00000054   Code   RO         1964    .text.writeMQTTString  mqttpacket.o
+    0x08007144   0x08007144   0x00000020   Code   RO         2163    i.__0printf         mc_w.l(printfa.o)
+    0x08007164   0x08007164   0x00000028   Code   RO         2165    i.__0sprintf        mc_w.l(printfa.o)
+    0x0800718c   0x0800718c   0x0000000e   Code   RO         2360    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0800719a   0x0800719a   0x00000002   Code   RO         2361    i.__scatterload_null  mc_w.l(handlers.o)
+    0x0800719c   0x0800719c   0x0000000e   Code   RO         2362    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x080071aa   0x080071aa   0x00000002   PAD
+    0x080071ac   0x080071ac   0x00000184   Code   RO         2170    i._fp_digits        mc_w.l(printfa.o)
+    0x08007330   0x08007330   0x000006dc   Code   RO         2171    i._printf_core      mc_w.l(printfa.o)
+    0x08007a0c   0x08007a0c   0x00000024   Code   RO         2172    i._printf_post_padding  mc_w.l(printfa.o)
+    0x08007a30   0x08007a30   0x0000002e   Code   RO         2173    i._printf_pre_padding  mc_w.l(printfa.o)
+    0x08007a5e   0x08007a5e   0x0000000a   Code   RO         2175    i._sputc            mc_w.l(printfa.o)
+    0x08007a68   0x08007a68   0x00000014   Data   RO         1294    .rodata..L__const.ADC_Config.adc  adc.o
+    0x08007a7c   0x08007a7c   0x00000058   Data   RO         1613    .rodata..L__const.MyMQTT_Connect.data  aliyun.o
+    0x08007ad4   0x08007ad4   0x00000004   Data   RO          678    .rodata.ADCPrescTable  stm32f10x_rcc.o
+    0x08007ad8   0x08007ad8   0x00000010   Data   RO          677    .rodata.APBAHBPrescTable  stm32f10x_rcc.o
+    0x08007ae8   0x08007ae8   0x00000710   Data   RO         1845    .rodata.gImage_money  app.o
+    0x080081f8   0x080081f8   0x00000710   Data   RO         1846    .rodata.gImage_power  app.o
+    0x08008908   0x08008908   0x000006d4   Data   RO         1844    .rodata.gImage_time  app.o
+    0x08008fdc   0x08008fdc   0x00000040   Data   RO         2120    .rodata.iot_sha1_padding  utils_sha1.o
+    0x0800901c   0x0800901c   0x00000056   Data   RO         1162    .rodata.str1.1      main.o
+    0x08009072   0x08009072   0x00000099   Data   RO         1192    .rodata.str1.1      delay.o
+    0x0800910b   0x0800910b   0x000000e4   Data   RO         1575    .rodata.str1.1      esp8266.o
+    0x080091ef   0x080091ef   0x00000273   Data   RO         1612    .rodata.str1.1      aliyun.o
+    0x08009462   0x08009462   0x0000005e   Data   RO         1807    .rodata.str1.1      mfrc522.o
+    0x080094c0   0x080094c0   0x0000004d   Data   RO         1850    .rodata.str1.1      app.o
+    0x0800950d   0x0800950d   0x0000000c   Data   RO         1882    .rodata.str1.1      mqttconnectclient.o
+    0x08009519   0x08009519   0x00000003   PAD
+    0x0800951c   0x0800951c   0x00000020   Data   RO         2359    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080093a8, Size: 0x00005bd8, Max: 0x00010000, ABSOLUTE, COMPRESSED[0x00000838])
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08009540, Size: 0x00005be0, Max: 0x00010000, ABSOLUTE, COMPRESSED[0x00000838])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   COMPRESSED   0x00000004   Data   RW         2278    .data               mc_w.l(stdout.o)
-    0x20000004   COMPRESSED   0x00000006   Data   RW         1745    .data.Default_Key   iccard.o
-    0x2000000a   COMPRESSED   0x00000002   Data   RW         1856    .data.car_power     app.o
-    0x2000000c   COMPRESSED   0x00000002   Data   RW         1801    .data.card_money    mfrc522.o
-    0x2000000e   COMPRESSED   0x00000003   Data   RW         1848    .data.charge_stepvalue  app.o
-    0x20000011   COMPRESSED   0x00000003   PAD
-    0x20000014   COMPRESSED   0x00000024   Data   RW         1846    .data.charger_way   app.o
-    0x20000038   COMPRESSED   0x00000001   Data   RW         1843    .data.choose_no     app.o
-    0x20000039   COMPRESSED   0x00000560   Data   RW         1696    .data.hz            zi.o
-    0x20000599   COMPRESSED   0x00000057   Data   RW         1695    .data.hz_index      zi.o
-    0x200005f0   COMPRESSED   0x0000000c   Data   RW         1852    .data.p_charge_num  app.o
-    0x200005fc   COMPRESSED   0x000005d0   Data   RW         1697    .data.zf            zi.o
-    0x20000bcc   COMPRESSED   0x0000005e   Data   RW         1694    .data.zf_index      zi.o
+    0x20000000   COMPRESSED   0x00000004   Data   RW         2283    .data               mc_w.l(stdout.o)
+    0x20000004   COMPRESSED   0x00000006   Data   RW         1750    .data.Default_Key   iccard.o
+    0x2000000a   COMPRESSED   0x00000002   Data   RW         1247    .data.KEY_Scan.key_up  key.o
+    0x2000000c   COMPRESSED   0x00000002   Data   RW         1861    .data.car_power     app.o
+    0x2000000e   COMPRESSED   0x00000002   Data   RW         1806    .data.card_money    mfrc522.o
+    0x20000010   COMPRESSED   0x00000003   Data   RW         1853    .data.charge_stepvalue  app.o
+    0x20000013   COMPRESSED   0x00000001   PAD
+    0x20000014   COMPRESSED   0x00000024   Data   RW         1851    .data.charger_way   app.o
+    0x20000038   COMPRESSED   0x00000001   Data   RW         1848    .data.choose_no     app.o
+    0x20000039   COMPRESSED   0x00000560   Data   RW         1701    .data.hz            zi.o
+    0x20000599   COMPRESSED   0x00000057   Data   RW         1700    .data.hz_index      zi.o
+    0x200005f0   COMPRESSED   0x0000000c   Data   RW         1857    .data.p_charge_num  app.o
+    0x200005fc   COMPRESSED   0x000005d0   Data   RW         1702    .data.zf            zi.o
+    0x20000bcc   COMPRESSED   0x0000005e   Data   RW         1699    .data.zf_index      zi.o
     0x20000c2a   COMPRESSED   0x00000006   PAD
-    0x20000c30        -       0x00000388   Zero   RW         1604    .bss.Ali_Buf        aliyun.o
-    0x20000fb8        -       0x00000001   Zero   RW         1854    .bss.Charge_Choose_Num.laset_choose_mode  app.o
-    0x20000fb9        -       0x00000001   Zero   RW         1853    .bss.Charge_Choose_Num.last_num  app.o
-    0x20000fba        -       0x00000001   Zero   RW         1847    .bss.Charge_Choose_View.last_num  app.o
-    0x20000fbb        -       0x00000004   Zero   RW         1743    .bss.Get_ID_Card    iccard.o
+    0x20000c30        -       0x00000388   Zero   RW         1609    .bss.Ali_Buf        aliyun.o
+    0x20000fb8        -       0x00000001   Zero   RW         1859    .bss.Charge_Choose_Num.laset_choose_mode  app.o
+    0x20000fb9        -       0x00000001   Zero   RW         1858    .bss.Charge_Choose_Num.last_num  app.o
+    0x20000fba        -       0x00000001   Zero   RW         1852    .bss.Charge_Choose_View.last_num  app.o
+    0x20000fbb        -       0x00000004   Zero   RW         1748    .bss.Get_ID_Card    iccard.o
     0x20000fbf   COMPRESSED   0x00000001   PAD
     0x20000fc0        -       0x00000002   Zero   RW         1232    .bss.RGB_ls.state   rgb.o
-    0x20000fc2        -       0x00000002   Zero   RW         1290    .bss.adc_data       adc.o
+    0x20000fc2        -       0x00000002   Zero   RW         1295    .bss.adc_data       adc.o
     0x20000fc4        -       0x00000004   Zero   RW         1190    .bss.cardtime       delay.o
-    0x20000fc8        -       0x00000002   Zero   RW         1850    .bss.charge_money   app.o
-    0x20000fca        -       0x00000002   Zero   RW         1851    .bss.charge_power   app.o
-    0x20000fcc        -       0x00000002   Zero   RW         1849    .bss.charge_time    app.o
-    0x20000fce        -       0x00000400   Zero   RW         1569    .bss.charger_buf    esp8266.o
-    0x200013ce        -       0x00000001   Zero   RW         1844    .bss.choose_mode    app.o
+    0x20000fc8        -       0x00000002   Zero   RW         1855    .bss.charge_money   app.o
+    0x20000fca        -       0x00000002   Zero   RW         1856    .bss.charge_power   app.o
+    0x20000fcc        -       0x00000002   Zero   RW         1854    .bss.charge_time    app.o
+    0x20000fce        -       0x00000400   Zero   RW         1574    .bss.charger_buf    esp8266.o
+    0x200013ce        -       0x00000001   Zero   RW         1849    .bss.choose_mode    app.o
     0x200013cf   COMPRESSED   0x00000001   PAD
-    0x200013d0        -       0x0000000a   Zero   RW         1842    .bss.device1        app.o
-    0x200013da        -       0x00000002   Zero   RW         1276    .bss.dht11_data     dht11.o
+    0x200013d0        -       0x0000000a   Zero   RW         1847    .bss.device1        app.o
+    0x200013da        -       0x00000002   Zero   RW         1281    .bss.dht11_data     dht11.o
     0x200013dc        -       0x00000004   Zero   RW         1189    .bss.dht11time      delay.o
     0x200013e0        -       0x00000002   Zero   RW         1185    .bss.init_status    delay.o
     0x200013e2   COMPRESSED   0x00000002   PAD
     0x200013e4        -       0x00000004   Zero   RW         1191    .bss.inittime       delay.o
-    0x200013e8        -       0x00000004   Zero   RW         1188    .bss.keytime        delay.o
-    0x200013ec        -       0x0000000a   Zero   RW         1681    .bss.lcddev         lcd.o
-    0x200013f6        -       0x00000001   Zero   RW         1206    .bss.led1_status    led.o
-    0x200013f7   COMPRESSED   0x00000001   PAD
-    0x200013f8        -       0x00000004   Zero   RW         1187    .bss.ledtime        delay.o
-    0x200013fc        -       0x00000004   Zero   RW         1186    .bss.runtime        delay.o
-    0x20001400        -       0x00000004   Zero   RW         1855    .bss.total_money    app.o
-    0x20001404        -       0x000007d4   Zero   RW         1568    .bss.wifi_data      esp8266.o
-    0x20001bd8        -       0x00004000   Zero   RW            1    STACK               startup_stm32f10x_hd.o
+    0x200013e8        -       0x00000002   Zero   RW         1249    .bss.key_old        key.o
+    0x200013ea   COMPRESSED   0x00000002   PAD
+    0x200013ec        -       0x00000004   Zero   RW         1188    .bss.keytime        delay.o
+    0x200013f0        -       0x0000000a   Zero   RW         1686    .bss.lcddev         lcd.o
+    0x200013fa        -       0x00000001   Zero   RW         1206    .bss.led1_status    led.o
+    0x200013fb   COMPRESSED   0x00000001   PAD
+    0x200013fc        -       0x00000004   Zero   RW         1187    .bss.ledtime        delay.o
+    0x20001400        -       0x00000002   Zero   RW         1248    .bss.num_on         key.o
+    0x20001402   COMPRESSED   0x00000002   PAD
+    0x20001404        -       0x00000004   Zero   RW         1186    .bss.runtime        delay.o
+    0x20001408        -       0x00000004   Zero   RW         1860    .bss.total_money    app.o
+    0x2000140c        -       0x000007d4   Zero   RW         1573    .bss.wifi_data      esp8266.o
+    0x20001be0        -       0x00004000   Zero   RW            1    STACK               startup_stm32f10x_hd.o
 
 
 ==============================================================================
@@ -4780,10 +4800,10 @@ Image component sizes
        436          0          0          0          2       2107   dht11.o
       1308          0        228          0       3028       7199   esp8266.o
        458          0          0          6          4       5942   iccard.o
-       382          0          0          0          0       1738   key.o
+       786          8          0          2          4       2613   key.o
       3278         16          0          0         10      10909   lcd.o
         94          0          0          0          1       1956   led.o
-      1136          4         86          0          0       1923   main.o
+      1140          8         86          0          0       2164   main.o
       2420          0         94          2          0       6903   mfrc522.o
        170          0          0          0          0       3023   misc.o
        692          0         12          0          0       4036   mqttconnectclient.o
@@ -4806,9 +4826,9 @@ Image component sizes
         84          0          0       3045          0        891   zi.o
 
     ----------------------------------------------------------------------
-     26704         40       7172       3112      20396     132341   Object Totals
+     27112         52       7172       3112      20404     133457   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-       156          0          3          5          9          0   (incl. Padding)
+       156          0          3          3         13          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -4865,15 +4885,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     30624        152       7172       3116      20396     132961   Grand Totals
-     30624        152       7172       2104      20396     132961   ELF Image Totals (compressed)
-     30624        152       7172       2104          0          0   ROM Totals
+     31032        164       7172       3116      20404     134077   Grand Totals
+     31032        164       7172       2104      20404     134077   ELF Image Totals (compressed)
+     31032        164       7172       2104          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                37796 (  36.91kB)
-    Total RW  Size (RW Data + ZI Data)             23512 (  22.96kB)
-    Total ROM Size (Code + RO Data + RW Data)      39900 (  38.96kB)
+    Total RO  Size (Code + RO Data)                38204 (  37.31kB)
+    Total RW  Size (RW Data + ZI Data)             23520 (  22.97kB)
+    Total ROM Size (Code + RO Data + RW Data)      40308 (  39.36kB)
 
 ==============================================================================
 

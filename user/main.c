@@ -49,7 +49,8 @@ int main()
 	LED4_OFF;
 	Beep_OFF;
 
-	uint16_t key_value = 0, rgb_value = 1;
+	KEY_VALUE key_value = KEY_PRES_NULL;
+	uint16_t rgb_value = 1;
 	char lcd_show_buf[2][29] = {0};
 	char showbuff [3] = {0};
 
@@ -75,15 +76,15 @@ start_view:
 
 		if(keytime > 10) {
 			key_value = Key_GetValue();
-			if(key_value > 0) {
+			if(key_value != KEY_PRES_NULL) {
 				switch (key_value) {
-					case 1:
+					case KEY1_PRES_SHORT:
 						Func_Add(choose_mode); break;
-					case 2:
+					case KEY2_PRES_SHORT:
 						Func_Sub(choose_mode); break;
-					case 3:
+					case KEY3_PRES_SHORT:
 						if (choose_mode > 0) choose_mode--; break;	// ·µ»Ø
-					case 4:
+					case KEY4_PRES_SHORT:
 						if (choose_mode < 3) choose_mode++; break;	// È·ÈÏ
 					default:
 						break;

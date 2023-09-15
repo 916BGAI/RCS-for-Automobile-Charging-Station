@@ -1,6 +1,7 @@
-./objects/key.o: ..\user\api\Key.c ..\user\api\Key.h ..\user\stm32f10x.h \
-  D:\Code\Keil_v5\ARM\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm3.h \
+./objects/key.o: ..\user\api\Key.c ..\user\api\Key.h \
   D:\Code\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  ..\user\stm32f10x.h \
+  D:\Code\Keil_v5\ARM\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm3.h \
   D:\Code\Keil_v5\ARM\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h \
   D:\Code\Keil_v5\ARM\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h \
   D:\Code\Keil_v5\ARM\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h \
